@@ -42,9 +42,12 @@ I am going to use the required technologies in the following ways.
 - **HTML** - HTML will provide the basic website structure, with pages for login, public feed, and your library.
 - **CSS** - Styling for website that is clean and easily readable. Light and dark mode options. Usable on computer and phone.
 - **React** - Provides a login landing page form, public update feed flow, displaying user's library, and showing search/add media interface.
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **Service** - Backend service that allows for:
+    - logging in
+    - retrieving user media input
+    - searching for that media in the correct database API 
+- **DB/Login** - Stores user/login info, each user's library using data from the APIs, each library tied to their specific login information.
+- **WebSocket** - After a user updates or changes something in their library, this change gets broadcasted to every other user.
 
 ## 🚀 AWS deliverable
 
