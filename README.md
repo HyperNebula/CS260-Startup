@@ -41,7 +41,7 @@ I am going to use the required technologies in the following ways.
 
 - **HTML** - HTML will provide the basic website structure, with pages for login, public feed, and your library.
 - **CSS** - Styling for website that is clean and easily readable. Light and dark mode options. Usable on computer and phone.
-- **React** - Description here
+- **React** - Provides a login landing page form, public update feed flow, displaying user's library, and showing search/add media interface.
 - **Service** - Description here
 - **DB/Login** - Description here
 - **WebSocket** - Description here
