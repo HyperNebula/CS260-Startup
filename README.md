@@ -19,20 +19,13 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 ### Elevator pitch
 
-Have you ever wanted to record and log your entertainment consumption, and been stumped on where to do it. There is no single website to track it all; instead one website for books, another for movies, others for games. **CultureCache** solves all of this by unifying your media life. It is a comprehensive tracking dashboard that allows users to search, rate, and log movies, books, and all types of games in one centralized location. **CultureCache** also introduces a social layer, allowing users to see a live feed of what their friends are currently finishing or rating. Stop toggling between three different apps; track your entire digital life in one place!
+Your taste in books, movies, and games makes you who you are. Yet, there is no single website to track it all; instead one website for books, another for movies, others for games. **CultureCache** solves all of this by unifying your media life. It is a comprehensive tracking dashboard that allows users to search, rate, and log movies, books, and all types of games in one centralized location. **CultureCache** also introduces a social layer, allowing users to see a live feed of what their friends are currently finishing or rating. Stop toggling between three different apps; track your entire digital life in one place!
 
 ### Design
 
 ![Design image](placeholder.png)
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-```mermaid
-sequenceDiagram
-    actor You
-    actor Website
-    You->>Website: Replace this with your design
-```
 
 ### Key features
 
