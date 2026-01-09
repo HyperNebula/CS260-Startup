@@ -19,7 +19,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 ### Elevator pitch
 
-Have you ever wanted to record and log your entertainment consumption, and been stumped on where to do it. There is no single website to track it all; instead one website for books, another for movies, others for games. **CultureCache** solves all of this by unifying your media life. It is a comprehensive tracking dashboard that allows users to search, rate, and log movies, books, and all types of games in one centralized location.
+Have you ever wanted to record and log your entertainment consumption, and been stumped on where to do it. There is no single website to track it all; instead one website for books, another for movies, others for games. **CultureCache** solves all of this by unifying your media life. It is a comprehensive tracking dashboard that allows users to search, rate, and log movies, books, and all types of games in one centralized location. **CultureCache** also introduces a social layer, allowing users to see a live feed of what their friends are currently finishing or rating. Stop toggling between three different apps; track your entire digital life in one place!
 
 ### Design
 
