@@ -31,9 +31,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- User login with secure connection over HTTPS
+- Ability to search for different media, such as books, movies, video games, board games, using various APIs
+- Add media to their library, marked as seen/read/played with the applicable date, or want to see/read/play.
+- Rate media and leave a review.
+- See live updates from other users on their media library changes and reviews.
 
 ### Technologies
 
