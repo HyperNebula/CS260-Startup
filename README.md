@@ -19,7 +19,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 ### Elevator pitch
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Have you ever wanted to record and log your entertainment consumption, and been stumped on where to do it. There is no single website to track it all; instead one website for books, another for movies, others for games. **CultureCache** solves all of this by unifying your media life. It is a comprehensive tracking dashboard that allows users to search, rate, and log movies, books, and all types of games in one centralized location.
 
 ### Design
 
