@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <title>CheckOff</title>
+        <link rel="icon" href="check-mark.png" />
+    </head>
+
+    <body>
+
+        <header>
+            <div class="logo">
+                <img src="check-mark.png" alt="Library Logo" style="width: 1.5em;height: auto;">
+                <span>CheckOff</span>
+            </div>
+
+            <br>
+
+            <nav>
+                <a href="index.html">Login</a> |
+                <a href="library.html">Library</a>  |
+                <a href="feed.html">Feed</a>
+            </nav>
+
+            <div class="account-settings">
+                <strong>Account Settings</strong>
+            </div>
+        </header>
+
+        <hr>
+
+        <h1>Account Settings</h1>
+
+        <form>
+
+            <fieldset>
+                <legend><strong>Public Profile</strong></legend>
+                
+                <p>
+                    <label>Username:</label><br>
+                    <input type="text" value="Current Username">
+                </p>
+
+                <p>
+                    <label>Profile Picture:</label><br>
+                    <input type="file" accept="image/png, image/jpeg">
+                </p>
+
+                <p>
+                    <label>Bio:</label><br>
+                    <textarea rows="4" cols="50">Information on user...</textarea>
+                </p>
+            </fieldset>
+            
+            <br>
+
+            <fieldset>
+                <legend><strong>Security</strong></legend>
+                
+                <p>
+                    <label>New Password:</label><br>
+                    <input type="password" placeholder="Leave blank to keep current">
+                </p>
+
+                <p>
+                    <label >Confirm New Password:</label><br>
+                    <input type="password">
+                </p>
+            </fieldset>
+
+            <br>
+
+            <fieldset>
+                <legend><strong>Library Preferences</strong></legend>
+                
+                <p><strong>Privacy:</strong></p>
+                
+                <input type="checkbox"checked>
+                <label for="public-profile">Make my library visible to everyone</label><br>
+
+                <input type="checkbox"checked>
+                <label for="show-activity">Share my activity in the public feed</label>
+                
+            </fieldset>
+
+            <br>
+
+            <fieldset>
+                <legend><strong>Danger Zone</strong></legend>
+                
+                <p>Once you delete your account, there is no going back.</p>
+                <button type="button">Delete Account</button>
+            </fieldset>
+
+            <br>
+            <hr>
+            <br>
+
+            <div>
+                <a href="library.html">Cancel</a>
+                <button type="submit">Save Changes</button>
+            </div>
+
+        </form>
+
+    </body>
+</html>
