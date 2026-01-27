@@ -52,21 +52,21 @@ I am going to use the required technologies in the following ways.
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click).
+- [x] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click).
 
 ## 🚀 HTML deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - I added HTML for each seperate page I will have on the completed webpage.
+- [X] **Proper HTML element usage** - I used a variety of HTML elements such as div, nav, main, img. Each for their own role.
+- [X] **Links** - I included links connecting each different webpage. I also included links that will modify one html page further on in the webpage development.
 - [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
+- [X] **3rd party API placeholder** - I filled in movie details such as genre and year, and included a plcaeholder movie poster, all of which will be replaced by the API.
+- [x] **Images** - I included a logo image for the website, on the webpage and in the tab. I also included placeholder images for movie posters and user profile images.
 - [ ] **Login placeholder** - I did not complete this part of the deliverable.
 - [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [ ] **WebSocket placeholder** - I added examples of user updates on the FEED page, which will be replaced with live updates from other users.
 
 ## 🚀 CSS deliverable
 
