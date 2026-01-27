@@ -36,7 +36,7 @@
                 
                 <p>
                     <label>Username:</label><br>
-                    <input type="text" value="Current Username">
+                    <input type="text" id="targetUsername" value="Current Username">
                 </p>
 
                 <p>
@@ -57,7 +57,7 @@
                 
                 <p>
                     <label>New Password:</label><br>
-                    <input type="password" placeholder="Leave blank to keep current">
+                    <input type="password" id="targetPassword" placeholder="Leave blank to keep current">
                 </p>
 
                 <p>
@@ -102,4 +102,16 @@
         </form>
 
     </body>
+<!--
+    <script>
+        const params = new URLSearchParams(window.location.search);
+
+        const nameFromUrl = params.get('username');
+        const passFromUrl = params.get('password');
+
+        if (nameFromUrl) document.getElementById('targetUsername').value = nameFromUrl;
+        if (passFromUrl) document.getElementById('targetPassword').value = passFromUrl;
+    </script>
+-->
+
 </html>
