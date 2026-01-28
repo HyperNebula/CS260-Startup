@@ -38,3 +38,7 @@ margin: 50px;
 .library-content {
     padding: 20px;
 }
+
+#userTitle {
+    text-align: center;
+}
