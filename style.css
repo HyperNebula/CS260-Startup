@@ -208,3 +208,17 @@ form.setting-form {
     cursor: pointer;
 }
 
+.setting-form .update-settings {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+}
+
+.setting-form .update-settings a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    margin-right: 20px;
+}
+
