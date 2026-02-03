@@ -240,6 +240,6 @@ form.setting-form {
     margin: 30px;
     border: 1.5px solid #bbb;
     border-radius: 5px;
-    padding: 20px;
+    padding: 20px 40px;
     overflow: auto;
 }
