@@ -91,3 +91,20 @@ body.login-page {
     filter: brightness(0);
 }
 
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    
+    padding: 11.5px 10px;
+    background-color: #fff;
+}
+
+.input-group input {
+    border: none;
+    outline: none;
+    font-size: 1em;
+}
