@@ -3,30 +3,34 @@
     <head>
         <title>CheckOff - Login</title>
         <link rel="icon" href="check-mark.png" />
+        <link rel="stylesheet" href="style.css">
     </head>
 
-    <body>
+    <body class="login-page">
+        
         <h1>CheckOff</h1>
 
         <div class="login_box">
 
-            <h3>Login</h3>
-            <hr>
+            <h2 style="margin-bottom: 30px;">Login</h2>
+
             <form action="library.html">
-                <!-- <label for="username">Username:</label> -->
-                <span style="filter: brightness(0);">👤</span>
-                <input type="text" name="username" placeholder="Enter your username"  minlength="3" required>
+                <div class="input-group">
+                    <span class="icon">👤</span>
+                    <input type="text" name="username" placeholder="Enter your username" minlength="3" required>
+                </div>
+                
+                <div class="input-group">
+                    <span class="icon">🗝️</span>
+                    <input type="password" name="password" placeholder="********" minlength="8" required>
+                </div>
                 
                 <br>
 
-                <!-- <label for="password">Password:</label> -->
-                <span style="filter: brightness(0);">🗝️</span>
-                <input type="password" name="password" placeholder="********"  minlength="8" required>
-                
-                <br><br>
-
-                <input type="submit" value="Login">
-                <input type="submit" value="Create Account" formaction="settings.html">
+                <div class="form-actions">
+                    <input type="submit" value="Login">
+                    <input type="submit" value="Create Account" formaction="settings.html">
+                </div>
             </form>
         
         </div>
