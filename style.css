@@ -54,10 +54,19 @@ body {
     background-color: #f4f4f4;
 }
 
-.credit {
+footer.credit {
     text-align: center;
     padding : 15px;
     position: fixed;
     width: 100%;
     bottom: 0;
 }
+
+body.login-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
