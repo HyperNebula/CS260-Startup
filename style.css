@@ -192,3 +192,19 @@ form.setting-form {
     width: 100%;
 }
 
+.setting-form fieldset.delete-field {
+    border: 1px solid #ffcccc;
+    background-color: #fff5f5;
+}
+
+.setting-form fieldset.delete-field button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+
+    padding: 10px 15px;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
