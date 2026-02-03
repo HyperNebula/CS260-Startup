@@ -73,9 +73,9 @@ footer.credit {
 
 h1.login-title {
     position: absolute;
-    top: 50px;
+    top: 5vh;
     text-align: center;
-    font-size: max(3em, 6vw);
+    font-size: max(4em, min(5.5em, 6vw));
 }
 
 body.login-page {
@@ -235,3 +235,11 @@ form.setting-form {
     margin-right: 20px;
 }
 
+.activity-feed {
+    height: 70%;
+    margin: 30px;
+    border: 1.5px solid #bbb;
+    border-radius: 5px;
+    padding: 20px;
+    overflow: auto;
+}
