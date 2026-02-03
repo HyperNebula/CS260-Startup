@@ -62,6 +62,13 @@ footer.credit {
     bottom: 0;
 }
 
+h1.login-title {
+    position: absolute;
+    top: 50px;
+    text-align: center;
+    font-size: max(3em, 6vw);
+}
+
 body.login-page {
     display: flex;
     flex-direction: column;
