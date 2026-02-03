@@ -134,9 +134,21 @@ body.login-page {
     transition: background-color 0.3s;
 }
 
-.login_box input[type="submit"]:hover {
+.login_box input[type="submit"]:hover, 
+.setting-form button[type="submit"]:hover {
     background-color: #555;
 }
+
+.setting-form button[type="submit"] {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
 
 .form-actions {
     display: flex;
@@ -204,6 +216,7 @@ form.setting-form {
 
     padding: 10px 15px;
     border-radius: 5px;
+    margin-bottom: 4px;
 
     cursor: pointer;
 }
