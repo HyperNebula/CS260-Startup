@@ -110,8 +110,10 @@ body.login-page {
 }
 
 .login_box input[type="submit"] {
+    flex: 1;
     padding: 12px;
     
+    margin-top: 10px;
     background-color: #333;
     color: white;
     border: none;
@@ -119,8 +121,15 @@ body.login-page {
     border-radius: 5px;
     font-size: 1em;
     cursor: pointer;
+
+    transition: background-color 0.3s;
 }
 
 .login_box input[type="submit"]:hover {
     background-color: #555;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
 }
