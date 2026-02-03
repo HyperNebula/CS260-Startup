@@ -53,3 +53,11 @@ body {
 .login-page {
     background-color: #f4f4f4;
 }
+
+footer {
+    text-align: center;
+    padding : 15px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
