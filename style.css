@@ -173,3 +173,22 @@ form.setting-form {
     color: #333;
 }
 
+
+.setting-form input[type="text"],
+.setting-form input[type="password"],
+.setting-form textarea {
+    width: 40%;
+    padding: 10px;
+
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    
+    resize: vertical;
+}
+
+.setting-form textarea {
+    width: 100%;
+}
+
