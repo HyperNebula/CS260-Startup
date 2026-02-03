@@ -3,6 +3,7 @@
         <title>CheckOff - Account Settings</title>
         <link rel="icon" href="check-mark.png" />
         <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 
     <body>
@@ -24,9 +25,9 @@
             </div>
         </header>
 
-        <h1>Account Settings</h1>
+        <h1 style="text-align: center;">Account Settings</h1>
 
-        <form>
+        <form class="setting-form">
 
             <fieldset>
                 <legend><strong>Public Profile</strong></legend>
@@ -43,7 +44,7 @@
 
                 <p>
                     <label>Bio:</label><br>
-                    <textarea rows="4" cols="50">Information on user...</textarea>
+                    <textarea rows="4" cols="50" style="resize: horizontal; overflow: auto;">Information on user...</textarea>
                 </p>
             </fieldset>
             
@@ -98,9 +99,9 @@
 
         </form>
 
-        <footer class="credit">
+        <footer style="text-align: center; padding-bottom: 15px;">
             <span>David Deskins</span> |
-            <a href="https://github.com/HyperNebula/CS260-Startup/" target="_blank" rel="noopener noreferrer">Github Repository</a>
+            <a href="https://github.com/HyperNebula/CS260-Startup/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">Github Repository</a>
         </footer>
 
     </body>
