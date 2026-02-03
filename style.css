@@ -70,3 +70,10 @@ body.login-page {
     min-height: 100vh;
 }
 
+.login_box {
+    background-color: white;
+    padding: 40px 80px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
