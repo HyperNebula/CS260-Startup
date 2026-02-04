@@ -76,7 +76,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **Use of a CSS framework** - I used Bootstrap for the ADD MOVIE button on library.html.
 - [x] **All visual elements styled using CSS** - CSS was used.
 - [x] **Responsive to window resizing using flexbox and/or grid display** - Both grid and flex were used in various parts of the site. Elements such as boxes and texts scale to the window, with spacing between elements also scaling.
-- [ ] **Use of a imported font** - I did not complete this part of the deliverable.
+- [x] **Use of a imported font** - I used a font from Google - Roboto.
 - [x] **Use of different types of selectors including element, class, ID, and pseudo selectors** - I used an assortment of selectors and combination of them in order to apply CSS.
 
 ## 🚀 React part 1: Routing deliverable
