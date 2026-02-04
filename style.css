@@ -1,9 +1,10 @@
 .item-list {
     margin: 50px;
+    clear: both;
     display: grid;
-    grid-template-columns: repeat(auto-fit, 200px);
-    grid-auto-rows: 300px;
+    grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
     gap: 20px;
+    padding-bottom: 60px;
 }
 
 header.nav-bar {
@@ -63,12 +64,22 @@ body {
     background-color: #f4f4f4;
 }
 
+footer.credit-login {
+    text-align: center;
+    padding : 15px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
 footer.credit {
     text-align: center;
     padding : 15px;
     position: fixed;
     width: 100%;
     bottom: 0;
+    background-color: #f4f4f4;
+    border-top: 1px solid #ddd;
 }
 
 h1.login-title {
