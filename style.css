@@ -68,8 +68,7 @@ header.nav-bar {
 
 body {
     margin: 0;
-    font-family: sans-serif !important;
-    
+    font-family: Roboto !important;
 }
 
 .login-page {
@@ -94,7 +93,7 @@ footer.credit {
     border-top: 1px solid #ddd;
 }
 
-h1.login-title {
+#login-title {
     position: absolute;
     top: 5vh;
     text-align: center;
@@ -173,7 +172,6 @@ body.login-page {
     font-size: 1em;
     transition: background-color 0.3s;
 }
-
 
 .form-actions {
     display: flex;
