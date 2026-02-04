@@ -28,6 +28,7 @@ header.nav-bar {
     display: flex;
     align-items: center;
     gap: 10px;
+    flex: 1;
 }
 .nav-links{
     display: flex;
@@ -38,6 +39,13 @@ header.nav-bar {
 .nav-links a {
     text-decoration: none;
     color: black;
+}
+
+.account-settings {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 15px;
 }
 
 .account-settings a {
@@ -60,7 +68,7 @@ header.nav-bar {
 
 body {
     margin: 0;
-    font-family: sans-serif;
+    font-family: sans-serif !important;
     
 }
 
