@@ -145,12 +145,15 @@ body.login-page {
     transition: background-color 0.3s;
 }
 
+
 .login_box input[type="submit"]:hover, 
-.setting-form button[type="submit"]:hover {
+.setting-form button[type="submit"]:hover,
+.add-movie:hover {
     background-color: #555;
 }
 
-.setting-form button[type="submit"] {
+.setting-form button[type="submit"],
+.add-movie  {
     background-color: #333;
     color: white;
     border: none;
@@ -158,6 +161,7 @@ body.login-page {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
+    transition: background-color 0.3s;
 }
 
 
@@ -254,3 +258,6 @@ form.setting-form {
     padding: 20px 40px;
     overflow: auto;
 }
+
+
+
