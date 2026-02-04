@@ -289,3 +289,12 @@ form.setting-form {
     transform: translateY(-5px);
     box-shadow: 0 8px 15px rgba(0,0,0,0.1);
 }
+
+.item img {
+    max-width: 130px;
+    height: auto;
+
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
