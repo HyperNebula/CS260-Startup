@@ -295,6 +295,19 @@ form.setting-form {
     height: auto;
 
     border-radius: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.item-details h2 {
+    font-size: 1.2em;
+    margin: 0 0 10px;
+    color: #333;
+}
+
+.item-details p {
+    font-size: 0.9em;
+    color: #666;
+    margin: 0;
+    line-height: 1.4;
 }
