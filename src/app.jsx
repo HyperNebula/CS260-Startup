@@ -19,17 +19,23 @@ export default function App() {
                     </div>
 
                     <nav className="nav-links">
-                        <a href="index.html">Log Out</a> |
-                        <a href="library.html">Library</a>  |
-                        <a href="feed.html">Feed</a>
+                        <NavLink  to="">Log Out</NavLink> |
+                        <NavLink  to="library">Library</NavLink>  |
+                        <NavLink  to="feed">Feed</NavLink>
                     </nav>
 
                     <div className="account-settings">
-                        <a href="settings.html">Account Settings</a>
+                        <NavLink to="settings">Account Settings</NavLink>
                     </div>
             </header>
 
-            <main>Body Here</main>
+            <Routes>
+                <Route path='/' element={<Login />} exact />
+                <Route path='/library' element={<Library />} />
+                <Route path='/feed' element={<Feed />} />
+                <Route path='/settings' element={<Settings />} />
+                <Route path='*' element={<NotFound />} />
+            </Routes>
 
             <footer className="credit">
                 <span>David Deskins | </span>
@@ -39,4 +45,8 @@ export default function App() {
         </div>
     </BrowserRouter>
   );
+}
+
+function NotFound() {
+  return <main className="container-fluid bg-secondary text-center">404: Return to sender. Address unknown.</main>;
 }
