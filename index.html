@@ -1,50 +1,16 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/check-mark.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
 
-    <head>
-        <title>CheckOff - Login</title>
-        <link rel="icon" href="photos/check-mark.png" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    </head>
-
-    <body class="login-page">
-        
-        <h1 id="login-title">CheckOff</h1>
-
-        <div class="login_box">
-
-            <h2 style="margin-bottom: 30px;">Login</h2>
-
-            <form action="library.html">
-                <div class="input-group">
-                    <span class="icon">👤</span>
-                    <input type="text" name="username" placeholder="Username" minlength="3" required>
-                </div>
-                
-                <div class="input-group">
-                    <span class="icon">🗝️</span>
-                    <input type="password" name="password" placeholder="Password" minlength="8" required>
-                </div>
-                
-                <br>
-
-                <div class="form-actions">
-                    <input type="submit" value="Login">
-                    <input type="submit" value="Create Account" formaction="settings.html">
-                </div>
-            </form>
-        
-        </div>
-
-        <footer class="credit-login">
-            <span>David Deskins</span> | 
-            <a href="https://github.com/HyperNebula/CS260-Startup/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">Github Repository</a>
-        </footer>
-        
-    </body>
-
+    <title>CheckOff</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/index.jsx"></script>
+  </body>
 </html>
