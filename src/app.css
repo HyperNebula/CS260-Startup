@@ -107,7 +107,7 @@ footer.credit {
     font-size: max(4em, min(5.5em, 6vw));
 }
 
-body.login-page {
+.login-page {
     display: flex;
     flex-direction: column;
     justify-content: center;
