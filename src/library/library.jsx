@@ -4,9 +4,9 @@ export function Library() {
   return (
     <main>
 
-      <div className="library-header">
+        <div className="library-header">
             <h1 id="userTitle">User's Library</h1>
-            <button type="button" clasName="add-movie">Add Movie</button>
+            <button type="button" className="add-movie">Add Movie</button>
         </div>
 
         <div className="library-content">
@@ -14,7 +14,7 @@ export function Library() {
             <div className="item-list">
                 
                 <div className="item">
-                    <img src="photos/placeholder_movie_poster.png" alt="Movie Poster"/>
+                    <img src="/placeholder_movie_poster.png" alt="Movie Poster"/>
                     <div className="item-details">
                         <h2>Movie Title</h2>
                         <p>Genre: Action, Adventure<br/>
@@ -24,7 +24,7 @@ export function Library() {
                 </div>
 
                 <div className="item">
-                    <img src="photos/placeholder_movie_poster.png" alt="Movie Poster"/>
+                    <img src="/placeholder_movie_poster.png" alt="Movie Poster"/>
                     <div className="item-details">
                         <h2>Another Movie</h2>
                         <p>Genre: Comedy <br/>
@@ -34,7 +34,7 @@ export function Library() {
                 </div>
 
                 <div className="item">
-                    <img src="photos/placeholder_movie_poster.png" alt="Movie Poster"/>
+                    <img src="/placeholder_movie_poster.png" alt="Movie Poster"/>
                     <div className="item-details">
                         <h2>A Third Movie</h2>
                         <p>Genre: Horror<br/>
@@ -44,7 +44,7 @@ export function Library() {
                 </div>
 
                 <div className="item">
-                    <img src="photos/placeholder_movie_poster.png" alt="Movie Poster"/>
+                    <img src="/placeholder_movie_poster.png" alt="Movie Poster"/>
                     <div className="item-details">
                         <h2>Movie #4</h2>
                         <p>Genre: Action<br/>
