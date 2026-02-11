@@ -165,11 +165,13 @@ body.login-page {
 
 
 .login_box input[type="submit"]:hover, 
-.setting-form button[type="submit"]:hover {
+.setting-form button[type="submit"]:hover,
+.add-movie:hover  {
     background-color: #555;
 }
 
-.setting-form button[type="submit"] {
+.setting-form button[type="submit"],
+.add-movie {
     background-color: #333;
     color: white;
     border: none;
