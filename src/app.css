@@ -268,7 +268,7 @@ form.setting-form {
 }
 
 .activity-feed {
-    height: 73%;
+    max-height: 70vh;
     margin: 30px;
     border: 1.5px solid #bbb;
     border-radius: 5px;
