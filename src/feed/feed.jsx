@@ -24,7 +24,7 @@ export function Feed() {
             <article>
                 <header>
                     <img src="/placeholder_user_profile_image.png" alt="Profile Pic" width="30" height="30"/>
-                    <span><strong>Mike</strong> just watched <strong>A Good Movie</strong>
+                    <span><strong>Mike</strong> just watched <strong>A Good Movie</strong> 
                     <time>4 hours ago</time></span>
                 </header>
                 
@@ -36,7 +36,7 @@ export function Feed() {
             <article>
                 <header>
                     <img src="/placeholder_user_profile_image.png" alt="Profile Pic" width="30" height="30"/>
-                    <span><strong>Jessica</strong> added 3 movies to their <em>"Horror Night"</em> list
+                    <span><strong>Jessica</strong> added 3 movies to their <em>"Horror Night"</em> list 
                     <time>yesterday</time></span>
                 </header>
 
@@ -50,7 +50,7 @@ export function Feed() {
             <article>
                 <header>
                     <img src="/placeholder_user_profile_image.png" alt="Profile Pic" width="30" height="30"/>
-                    <span><strong>Bob</strong> added 5 movies to their <em>"Want to watch"</em> list
+                    <span><strong>Bob</strong> added 5 movies to their <em>"Want to watch"</em> list 
                     <time>2 days ago</time></span>
                 </header>
 
@@ -66,7 +66,7 @@ export function Feed() {
             <article>
                 <header>
                     <img src="/placeholder_user_profile_image.png" alt="Profile Pic" width="30" height="30"/>
-                    <span><strong>David</strong> watched <strong>Cool Movie</strong>
+                    <span><strong>David</strong> watched <strong>Cool Movie</strong> 
                     <time>4 days ago</time></span>
                 </header>
                 
