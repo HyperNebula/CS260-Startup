@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 .item-list {
     margin: 50px 5vw;
     clear: both;
@@ -64,6 +66,11 @@ header.nav-bar {
 .library-header .add-movie {
     position: absolute;
     right: 30px;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto !important;
 }
 
 .body {
