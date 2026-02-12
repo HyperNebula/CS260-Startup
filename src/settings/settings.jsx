@@ -71,7 +71,7 @@ export function Settings() {
                 <br/>
 
                 <div class="update-settings">
-                    <a href="library.html">Cancel</a>
+                    <a href="library">Cancel</a>
                     <button type="submit">Save Changes</button>
                 </div>
 

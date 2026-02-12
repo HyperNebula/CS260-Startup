@@ -18,9 +18,9 @@ export default function App() {
                     </div>
 
                     <nav className="nav-links">
-                        <NavLink  to="">Log Out</NavLink> |
-                        <NavLink  to="library">Library</NavLink>  |
-                        <NavLink  to="feed">Feed</NavLink>
+                        <NavLink to="">Log Out</NavLink> |
+                        <NavLink to="library">Library</NavLink>  |
+                        <NavLink to="feed">Feed</NavLink>
                     </nav>
 
                     <div className="account-settings">

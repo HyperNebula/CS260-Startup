@@ -10,7 +10,7 @@ export function Login() {
 
 				<h2 style={{ marginBottom: 30 }}>Login</h2>
 
-				<form action="library.html">
+				<form action="library" method='PUT'>
 					<div className="input-group">
 						<span className="icon">👤</span>
 						<input type="text" name="username" placeholder="Username" minlength="3" required/>
@@ -25,7 +25,7 @@ export function Login() {
 
 					<div className="form-actions">
 						<input type="submit" value="Login"/>
-						<input type="submit" value="Create Account" formaction="settings.html"/>
+						<input type="submit" value="Create Account" formaction="settings"/>
 					</div>
 				</form>
 			
