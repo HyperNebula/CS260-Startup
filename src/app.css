@@ -147,7 +147,8 @@ footer.credit {
     font-size: 1em;
 }
 
-.login_box input[type="submit"] {
+.login_box input[type="submit"],
+.login_box input[type="button"] {
     flex: 1;
     padding: 12px;
     
@@ -166,7 +167,8 @@ footer.credit {
 
 .login_box input[type="submit"]:hover, 
 .setting-form button[type="submit"]:hover,
-.add-movie:hover  {
+.add-movie:hover,
+.login_box input[type="button"]:hover  {
     background-color: #555;
 }
 
