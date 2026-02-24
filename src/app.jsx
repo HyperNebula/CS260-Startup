@@ -7,26 +7,39 @@ import { Library } from './library/library';
 import { Feed } from './feed/feed';
 import { Settings } from './settings/settings';
 
+function Navbar() {
+    const location = useLocation()
+
+    if (location.pathname === "/") {
+        return null
+    }
+
+    return (
+        <header className="nav-bar">
+            <div className="logo">
+                <img src="/check-mark.png" alt="Library Logo" style={{ width: "1.5em", height: "auto" }} />
+                <span>CheckOff</span>
+            </div>
+
+            <nav className="nav-links">
+                <NavLink to="">Log Out</NavLink> |
+                <NavLink to="library">Library</NavLink>  |
+                <NavLink to="feed">Feed</NavLink>
+            </nav>
+
+            <div className="account-settings">
+                <NavLink to="settings">Account Settings</NavLink>
+            </div>
+        </header>
+    )
+}
+
 export default function App() {
   return (
     <BrowserRouter>
         <div className="body">
-            <header className="nav-bar">
-                    <div className="logo">
-                        <img src="/check-mark.png" alt="Library Logo" style={{ width: "1.5em", height: "auto" }} />
-                        <span>CheckOff</span>
-                    </div>
-
-                    <nav className="nav-links">
-                        <NavLink to="">Log Out</NavLink> |
-                        <NavLink to="library">Library</NavLink>  |
-                        <NavLink to="feed">Feed</NavLink>
-                    </nav>
-
-                    <div className="account-settings">
-                        <NavLink to="settings">Account Settings</NavLink>
-                    </div>
-            </header>
+            
+            <Navbar />
 
             <Routes>
                 <Route path='/' element={<Login />} exact />
