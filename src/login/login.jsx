@@ -24,9 +24,11 @@ export function Login() {
 					navigate('/library');
 				} else {
 					alert("Incorrect Password");
+					return;
 				}
 			} else {
 				alert("Error, not registered");
+				return;
 			}
 		}
 	};
