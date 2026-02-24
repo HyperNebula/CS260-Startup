@@ -6,6 +6,7 @@ import { Login } from './login/login';
 import { Library } from './library/library';
 import { Feed } from './feed/feed';
 import { Settings } from './settings/settings';
+import { ProtectedRoute } from "./protectedRoute";
 
 export class UserData {
     constructor(username, password) {
@@ -15,6 +16,8 @@ export class UserData {
 };
 
 localStorage.setItem("userDataSet", JSON.stringify([new UserData("david", "password")]));
+localStorage.setItem("userName", "");
+localStorage.setItem("userID", null);
 
 function Navbar() {
     const location = useLocation()
@@ -53,9 +56,9 @@ export default function App() {
 
                 <Routes>
                     <Route path='/' element={<Login />} exact />
-                    <Route path='/library' element={<Library />} />
-                    <Route path='/feed' element={<Feed />} />
-                    <Route path='/settings' element={<Settings />} />
+                    <Route path='/library' element={<ProtectedRoute> <Library /> </ProtectedRoute>} />
+                    <Route path='/feed' element={<ProtectedRoute> <Feed /> </ProtectedRoute>} />
+                    <Route path='/settings' element={<ProtectedRoute> <Settings /> </ProtectedRoute>} />
                     <Route path='*' element={<NotFound />} />
                 </Routes>
 
