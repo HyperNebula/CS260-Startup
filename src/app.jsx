@@ -14,7 +14,7 @@ export class UserData {
     }
 };
 
-localStorage.setItem("userDataSet", JSON.stringify([new UserData("david", "password")]))
+localStorage.setItem("userDataSet", JSON.stringify([new UserData("david", "password")]));
 
 function Navbar() {
     const location = useLocation()

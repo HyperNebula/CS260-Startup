@@ -19,6 +19,7 @@ export function Login() {
 			if (user.username == username) {
 				if (user.password == password) {
 					localStorage.setItem('userName', username);
+					localStorage.setItem('userID', userDataSet.indexOf(user));
 
 					navigate('/library');
 				} else {
@@ -39,6 +40,16 @@ export function Login() {
 		}
 
 		const userDataSet = JSON.parse(localStorage.getItem("userDataSet"));
+
+		for (const user of userDataSet) {
+			if (user.username == username) {
+				alert("Username Already Taken");
+				return;
+			}
+		}
+
+		localStorage.setItem('userID', userDataSet.length);
+
 		userDataSet.push(new UserData(username, password));
 		localStorage.setItem("userDataSet", JSON.stringify(userDataSet));
 
