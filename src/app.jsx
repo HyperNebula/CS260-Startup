@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, useState } from 'react';
 import './app.css';
 
 import { BrowserRouter, NavLink, Route, Routes, useLocation } from 'react-router-dom';
@@ -6,6 +6,15 @@ import { Login } from './login/login';
 import { Library } from './library/library';
 import { Feed } from './feed/feed';
 import { Settings } from './settings/settings';
+
+export class UserData {
+    constructor(username, password) {
+        this.username = username;
+        this.password = password;
+    }
+};
+
+localStorage.setItem("userDataSet", JSON.stringify([new UserData("david", "password")]))
 
 function Navbar() {
     const location = useLocation()
@@ -35,28 +44,29 @@ function Navbar() {
 }
 
 export default function App() {
-  return (
-    <BrowserRouter>
-        <div className="body">
-            
-            <Navbar />
 
-            <Routes>
-                <Route path='/' element={<Login />} exact />
-                <Route path='/library' element={<Library />} />
-                <Route path='/feed' element={<Feed />} />
-                <Route path='/settings' element={<Settings />} />
-                <Route path='*' element={<NotFound />} />
-            </Routes>
+    return (
+        <BrowserRouter>
+            <div className="body">
+                
+                <Navbar />
 
-            <footer className="credit">
-                <span>David Deskins | </span>
-                <a href="https://github.com/HyperNebula/CS260-Startup/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>Github Repository</a>
-            </footer>
+                <Routes>
+                    <Route path='/' element={<Login />} exact />
+                    <Route path='/library' element={<Library />} />
+                    <Route path='/feed' element={<Feed />} />
+                    <Route path='/settings' element={<Settings />} />
+                    <Route path='*' element={<NotFound />} />
+                </Routes>
 
-        </div>
-    </BrowserRouter>
-  );
+                <footer className="credit">
+                    <span>David Deskins | </span>
+                    <a href="https://github.com/HyperNebula/CS260-Startup/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>Github Repository</a>
+                </footer>
+
+            </div>
+        </BrowserRouter>
+    );
 }
 
 function NotFound() {
