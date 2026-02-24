@@ -9,26 +9,40 @@ export function Login() {
 
 	const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-	const [userDataSet, setUserDataSet] = useState([]);
 
 	const handleLogin = (e) => {
 		e.preventDefault();
 
-		setUserDataSet(JSON.parse(localStorage.getItem("userDataSet")))
+		const userDataSet = JSON.parse(localStorage.getItem("userDataSet"));
 
 		for (const user of userDataSet) {
 			if (user.username == username) {
-				localStorage.setItem('userName', username);
+				if (user.password == password) {
+					localStorage.setItem('userName', username);
 
-				navigate('/library');
+					navigate('/library');
+				} else {
+					alert("Incorrect Password");
+				}
 			} else {
-				console.log("Error, not registered");
+				alert("Error, not registered");
 			}
 		}
 	};
 
 	const handleAccountCreation = (e) => {
 		e.preventDefault();
+
+		if (username.length < 3 || password.length < 8) {
+			alert("Please fill out the fields correctly before creating an account.");
+			return;
+		}
+
+		const userDataSet = JSON.parse(localStorage.getItem("userDataSet"));
+		userDataSet.push(new UserData(username, password));
+		localStorage.setItem("userDataSet", JSON.stringify(userDataSet));
+
+		localStorage.setItem('userName', username);
 
 		navigate('/settings');
 	}
