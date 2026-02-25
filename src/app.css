@@ -168,12 +168,14 @@ footer.credit {
 .login_box input[type="submit"]:hover, 
 .setting-form button[type="submit"]:hover,
 .add-movie:hover,
-.login_box input[type="button"]:hover  {
+.login_box input[type="button"]:hover,
+#searchForm button:hover {
     background-color: #555;
 }
 
 .setting-form button[type="submit"],
-.add-movie {
+.add-movie,
+#searchForm button {
     background-color: #333;
     color: white;
     border: none;
@@ -335,4 +337,36 @@ form.setting-form {
     color: #666;
     margin: 0;
     line-height: 1.4;
+}
+
+
+
+#searchModal::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#searchModal h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#closeSearchModal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    background-color: #f1f1f1;
+
+    border: none;
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    font-size: 16px;
+    line-height: 1;
+    
+    width: 30px;
+    height: 30px;
+    
 }

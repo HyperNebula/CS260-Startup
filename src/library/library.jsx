@@ -37,7 +37,7 @@ export function Library() {
 
             <div className="library-header">
                 <h1 id="userTitle">{localStorage.getItem("userName")}'s Library</h1>
-                <button type="button" className="add-movie">Add Movie</button>
+                <button type="button" className="add-movie" command="show-modal" commandfor="searchModal">Add Movie</button>
             </div>
 
             <div className="library-content">
@@ -51,6 +51,18 @@ export function Library() {
                 </div>
 
             </div>
+
+            <dialog id="searchModal">
+                <button id="closeSearchModal" commandfor="searchModal" command="close">X</button>
+                <h2>Search for a Movie</h2>
+                <form id="searchForm">
+                    <input type="search" id="movieSearchInput" placeholder="Search for a movie..." />
+                    <button type="submit">Search</button>
+                </form>
+                <div id="searchResults">
+                    {/* Search results will be displayed here */}
+                </div>
+            </dialog>
         
         </main>
     );
