@@ -370,3 +370,25 @@ form.setting-form {
     height: 30px;
     
 }
+
+#closeSearchModal:hover {
+    background-color: #ddd;
+}
+
+#searchForm {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#searchForm input[type="search"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+#searchForm button {
+    padding: 10px 15px;
+}
