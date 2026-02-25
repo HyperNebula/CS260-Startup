@@ -1,4 +1,5 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 import './app.css';
 
 import { BrowserRouter, NavLink, Route, Routes, useLocation } from 'react-router-dom';
@@ -16,8 +17,11 @@ export class UserData {
 };
 
 localStorage.setItem("userDataSet", JSON.stringify([new UserData("david", "password")]));
-localStorage.setItem("userName", "");
-localStorage.setItem("userID", null);
+//localStorage.setItem("userName", "");
+//localStorage.setItem("userID", null);
+
+localStorage.setItem("userName", "david");
+localStorage.setItem("userID", 0);
 
 function Navbar() {
     const location = useLocation()
@@ -50,6 +54,8 @@ export default function App() {
 
     return (
         <BrowserRouter>
+            <div><Toaster/></div>
+
             <div className="body">
                 
                 <Navbar />

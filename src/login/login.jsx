@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 import { UserData } from '../app';
 
@@ -23,11 +24,11 @@ export function Login() {
 
 					navigate('/library');
 				} else {
-					alert("Incorrect Password");
+					toast.error("Incorrect Password");
 					return;
 				}
 			} else {
-				alert("Error, not registered");
+				toast.error("User is not registered");
 				return;
 			}
 		}
@@ -36,8 +37,13 @@ export function Login() {
 	const handleAccountCreation = (e) => {
 		e.preventDefault();
 
-		if (username.length < 3 || password.length < 8) {
-			alert("Please fill out the fields correctly before creating an account.");
+		if (username.length < 3) {
+			toast.error("Username should be at least 3 characters");
+			return;
+		}
+
+		if (password.length < 8) {
+			toast.error("Password should be at least 8 characters");
 			return;
 		}
 
@@ -45,7 +51,7 @@ export function Login() {
 
 		for (const user of userDataSet) {
 			if (user.username == username) {
-				alert("Username Already Taken");
+				toast.error("Username Already Taken");
 				return;
 			}
 		}
