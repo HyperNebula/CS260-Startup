@@ -1,5 +1,29 @@
 import React from 'react';
 
+class MovieData {
+    constructor(name, posterLink, genres, year, status) {
+        this.name = name;
+        this.posterLink = posterLink;
+        this.genres = genres;
+        this.year = year;
+        this.status = status;
+    }
+};
+
+function displayMovie( { movie }) {
+    return (
+        <div className="item">
+            <img src={movie.posterLink} alt={movie.name} />
+            <div className="item-details">
+                <h2>{movie.name}</h2>
+                <p>Genre: {movie.genres}<br/>
+                Year: {movie.year}<br/>
+                Status: {movie.status}</p>
+            </div>
+        </div>
+    );
+}
+
 export function Library() {
 
     return (
