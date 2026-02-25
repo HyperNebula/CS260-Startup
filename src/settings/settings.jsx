@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 export function Settings() {
 
@@ -13,21 +14,25 @@ export function Settings() {
         e.preventDefault();
 
         if (password != passwordConfirm) {
-            alert("Passwords do not match");
+            toast.error("Passwords do not match");
             return;
         }
         
         if (password != "" && password.length < 8) {
-            alert("Password must be at least 8 characters.");
+            toast.error("Password must be at least 8 characters.");
             return;
         }
 
         const userDataSet = JSON.parse(localStorage.getItem("userDataSet"));
         
         if (localStorage.getItem("userName") != username) {
+            if (username.length < 3) {
+			    toast.error("Username should be at least 3 characters");
+			    return;
+		    }
             for (const user of userDataSet) {
                 if (user.username == username) {
-                    alert("Username Already Taken");
+                    toast.error("Username Already Taken");
                     return;
                 }
             }
@@ -93,11 +98,11 @@ export function Settings() {
                     
                     <p><strong>Privacy:</strong></p>
                     
-                    <input type="checkbox"checked/>
-                    <label for="public-profile">Make my library visible to everyone</label><br/>
+                    <input type="checkbox" defaultChecked/>
+                    <label htmlFor="public-profile">Make my library visible to everyone</label><br/>
 
-                    <input type="checkbox"checked/>
-                    <label for="show-activity">Share my activity in the public feed</label>
+                    <input type="checkbox" defaultChecked/>
+                    <label htmlFor="show-activity">Share my activity in the public feed</label>
                     
                 </fieldset>
 
