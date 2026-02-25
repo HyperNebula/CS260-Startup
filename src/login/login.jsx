@@ -23,15 +23,15 @@ export function Login() {
 					localStorage.setItem('userID', userDataSet.indexOf(user));
 
 					navigate('/library');
+					return;
 				} else {
 					toast.error("Incorrect Password");
 					return;
 				}
-			} else {
-				toast.error("User is not registered");
-				return;
 			}
 		}
+		toast.error("User is not registered");
+		return;
 	};
 
 	const handleAccountCreation = (e) => {
