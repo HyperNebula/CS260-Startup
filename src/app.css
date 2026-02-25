@@ -339,7 +339,15 @@ form.setting-form {
     line-height: 1.4;
 }
 
-
+#searchModal {
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 80vw;
+    max-width: 600px;
+    max-height: 80vh;
+}
 
 #searchModal::backdrop {
     background-color: rgba(0, 0, 0, 0.5);

@@ -28,9 +28,25 @@ function DisplayMovie( { movie }) {
     );
 }
 
+function getMovieResults() {
+    for (let i = 1; i < 5; i++) {
+        setMovieReturn(movieReturn.push(new MovieData(searchText, crypto.randomUUID(), "/placeholder_movie_poster.png", "Comedy", "202" + i, "Watched")));
+    }
+}
+
+function DisplayMovieResult ( { movie } ) {
+    return (
+        <div className="searchItem">
+
+        </div>
+    );
+}
+
 export function Library() {
 
     const [libraryDB, setLibraryDB] = useState(JSON.parse(localStorage.getItem("libraryDB")));
+    const [movieReturn, setMovieReturn] = useState([]);
+    const [searchText, setSearchText] = useState('');
 
     return (
         <main>
@@ -55,12 +71,14 @@ export function Library() {
             <dialog id="searchModal">
                 <button id="closeSearchModal" commandfor="searchModal" command="close">X</button>
                 <h2>Search for a Movie</h2>
-                <form id="searchForm">
+                <form id="searchForm" onSubmit={ getMovieResults }>
                     <input type="search" id="movieSearchInput" placeholder="Search for a movie..." />
                     <button type="submit">Search</button>
                 </form>
                 <div id="searchResults">
-                    {/* Search results will be displayed here */}
+                    {[...movieReturn].reverse().map((movie, index) => {
+                        return <DisplayMovieResult key={index} movie={movie} />;
+                    })}
                 </div>
             </dialog>
         
