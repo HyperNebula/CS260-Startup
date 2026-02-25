@@ -400,3 +400,10 @@ form.setting-form {
 #searchForm button {
     padding: 10px 15px;
 }
+
+#searchResults {
+    flex: 1;
+    overflow-y: auto;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
