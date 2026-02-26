@@ -44,16 +44,14 @@ export function Feed() {
     const [updates, setUpdates] = useState([new FeedUpdate("Rating", "Test User", "/placeholder_user_profile_image.png", "Movie 1", "Monday", "⭐⭐⭐⭐⭐"), new FeedUpdate("Watched", "Test User 2", "/placeholder_user_profile_image.png", "Movie 2", "Saturady", "/placeholder_movie_poster.png")]);
 
     useEffect(() => {
-        setInterval(() => {
+        const interval = setInterval(() => {
             const newItem = new FeedUpdate("Rating", "Test User", "/placeholder_user_profile_image.png", "Movie 1", "Monday", "⭐⭐⭐⭐⭐");
             
             setUpdates(prevUpdates => [...prevUpdates, newItem]);
         }, 5000);
 
-        return;
+        return () => clearInterval(interval);
     }, []);
-
-   
 
     return (
         <main>
