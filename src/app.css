@@ -426,8 +426,22 @@ form.setting-form {
 }
 
 .searchItem img {
-    width: 40px;
-    height: 60px;
+    height: 150px;
     object-fit: cover;
     border-radius: 3px;
+}
+
+.searchItemDetails {
+    flex-grow: 1;
+}
+
+.searchItemDetails h3 {
+    font-size: 1.3em;
+    margin: 0;
+}
+
+.searchItemDetails p {
+    font-size: 0.9em;
+    color: #666;
+    margin: 4px 0 0;
 }

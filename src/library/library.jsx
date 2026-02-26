@@ -32,7 +32,7 @@ function DisplayMovieResult ( { movie } ) {
     return (
         <div className="searchItem">
             <img src={movie.posterLink} alt={`${movie.name} poster`} />
-            <div className="search-item-details">
+            <div className="searchItemDetails">
                 <h3>{movie.name} ({movie.year})</h3>
                 <p>{movie.genres}</p>
             </div>
@@ -86,7 +86,7 @@ export function Library() {
                     <button type="submit">Search</button>
                 </form>
                 <div id="searchResults">
-                    {[...movieReturn].reverse().map((movie, index) => {
+                    {movieReturn.map((movie, index) => {
                         return <DisplayMovieResult key={index} movie={movie} />;
                     })}
                 </div>
