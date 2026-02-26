@@ -31,7 +31,12 @@ function DisplayMovie( { movie }) {
 function DisplayMovieResult ( { movie } ) {
     return (
         <div className="searchItem">
-            { movie.name }
+            <img src={movie.posterLink} alt={`${movie.name} poster`} />
+            <div className="search-item-details">
+                <h3>{movie.name} ({movie.year})</h3>
+                <p>{movie.genres}</p>
+            </div>
+            <button className="add-to-library-btn">+</button>
         </div>
     );
 }
@@ -48,7 +53,7 @@ export function Library() {
         setMovieReturn([])
 
         for (let i = 1; i < 5; i++) {
-            const newItem = new MovieData(searchText, crypto.randomUUID(), "/placeholder_movie_poster.png", "Comedy", "202" + i, "Watched")
+            const newItem = new MovieData(searchText + " " + i, crypto.randomUUID(), "/placeholder_movie_poster.png", "Comedy", "202" + i, "Watched")
             setMovieReturn(prevUpdates => [...prevUpdates, newItem]);
         }
     }
