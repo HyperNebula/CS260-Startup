@@ -1,7 +1,5 @@
 # CheckOff
 
-[My Notes](notes.md)
-
 **CheckOff** is a media tracker website, allowing you to track and record all forms of media that you have consumed, such as movies, books, shows, and video games, all in one convenient place.
 
 ## 🚀 Specification Deliverable
@@ -91,8 +89,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
+- [x] **All functionality implemented or mocked out** - I used localStorage to keep track of user accounts as well as the user's library database. I mocked out an API returning info from a movie search query, and made it so that all functionality, inclduing changing user info, is implemented.
+- [x] **Hooks** - I used useState a lot of times to keep track of various variables, such as login info and the library database. I also used useEffect combined with an interval to simulate websockets on the Feed page.
 
 ## 🚀 Service deliverable
 
