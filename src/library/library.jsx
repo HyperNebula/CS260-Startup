@@ -32,7 +32,7 @@ function DisplayMovie( { movie }) {
 export function Library() {
 
     const [libraryDB, setLibraryDB] = useState(JSON.parse(localStorage.getItem("libraryDB")));
-    const [movieReturn, setMovieReturn] = useState([new MovieData("Test Movie", "1", "/placeholder_movie_poster.png", "Comedy", "2023", "", "To Watch")]);
+    const [movieReturn, setMovieReturn] = useState([]);
     const [searchText, setSearchText] = useState('');
 
     const getMovieResults = (e) => {

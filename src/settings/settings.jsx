@@ -13,16 +13,6 @@ export function Settings() {
     const handleAccountUpdate = (e) => {
         e.preventDefault();
 
-        if (password != passwordConfirm) {
-            toast.error("Passwords do not match");
-            return;
-        }
-        
-        if (password != "" && password.length < 8) {
-            toast.error("Password must be at least 8 characters.");
-            return;
-        }
-
         const userDataSet = JSON.parse(localStorage.getItem("userDataSet"));
         
         if (localStorage.getItem("userName") != username) {
@@ -36,6 +26,16 @@ export function Settings() {
                     return;
                 }
             }
+        }
+
+        if (password != passwordConfirm) {
+            toast.error("Passwords do not match");
+            return;
+        }
+        
+        if (password != "" && password.length < 8) {
+            toast.error("Password must be at least 8 characters.");
+            return;
         }
 
         userDataSet[localStorage.getItem("userID")].username = username;

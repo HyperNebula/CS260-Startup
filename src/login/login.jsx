@@ -14,6 +14,16 @@ export function Login() {
 	const handleLogin = (e) => {
 		e.preventDefault();
 
+		if (username.length < 3) {
+			toast.error("Username should be at least 3 characters");
+			return;
+		}
+
+		if (password.length < 8) {
+			toast.error("Password should be at least 8 characters");
+			return;
+		}
+
 		const userDataSet = JSON.parse(localStorage.getItem("userDataSet"));
 
 		for (const user of userDataSet) {
@@ -78,12 +88,12 @@ export function Login() {
 				<form onSubmit={ handleLogin }>
 					<div className="input-group">
 						<span className="icon">👤</span>
-						<input type="text" name="username" placeholder="Username" minLength="3" required value={username} onChange={(e) => setUsername(e.target.value)}/>
+						<input type="text" name="username" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}/>
 					</div>
 					
 					<div className="input-group">
 						<span className="icon">🗝️</span>
-						<input type="password" name="password" placeholder="Password" minLength="8" required value={password} onChange={(e) => setPassword(e.target.value)}/>
+						<input type="password" name="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
 					</div>
 					
 					<br/>

@@ -17,11 +17,11 @@ export class UserData {
 };
 
 localStorage.setItem("userDataSet", JSON.stringify([new UserData("david", "password")]));
-//localStorage.setItem("userName", "");
-//localStorage.setItem("userID", null);
+localStorage.setItem("userName", "");
+localStorage.setItem("userID", null);
 
-localStorage.setItem("userName", "david");
-localStorage.setItem("userID", 0);
+//localStorage.setItem("userName", "david");
+//localStorage.setItem("userID", 0);
 
 function Navbar() {
     const location = useLocation()
