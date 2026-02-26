@@ -445,3 +445,21 @@ form.setting-form {
     color: #666;
     margin: 4px 0 0;
 }
+
+.add-to-library-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 30%;
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
+    cursor: pointer;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-bottom: 0px;
+}
+
+.add-to-library-btn:hover {
+    background-color: #218838;
+}
