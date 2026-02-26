@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 
 class MovieData {
-    constructor(name, movieID, posterLink, genres, year, status) {
+    constructor(name, movieID, posterLink, genres, year, description, status) {
         this.name = name;
         this.moveID = movieID;
         this.posterLink = posterLink;
         this.genres = genres;
         this.year = year;
+        this.description = description;
         this.status = status;
     }
 };
 
-const testArray = [new MovieData("Test Movie", "1", "/placeholder_movie_poster.png", "Comedy", "2023", "To Watch"), new MovieData("Another Movie", "2", "/placeholder_movie_poster.png", "Action, Adventure", "2010", "Watched")];
+const testArray = [new MovieData("Test Movie", "1", "/placeholder_movie_poster.png", "Comedy", "2023", "", "To Watch"), new MovieData("Another Movie", "2", "/placeholder_movie_poster.png", "Action, Adventure", "2010", "", "Watched")];
 localStorage.setItem("libraryDB", JSON.stringify(testArray));
 
 function DisplayMovie( { movie }) {
@@ -28,34 +29,45 @@ function DisplayMovie( { movie }) {
     );
 }
 
-function DisplayMovieResult ( { movie } ) {
-    return (
-        <div className="searchItem">
-            <img src={movie.posterLink} alt={`${movie.name} poster`} />
-            <div className="searchItemDetails">
-                <h3>{movie.name} ({movie.year})</h3>
-                <p>{movie.genres}</p>
-            </div>
-            <button className="add-to-library-btn">+</button>
-        </div>
-    );
-}
-
 export function Library() {
 
     const [libraryDB, setLibraryDB] = useState(JSON.parse(localStorage.getItem("libraryDB")));
-    const [movieReturn, setMovieReturn] = useState([new MovieData("Test Movie", "1", "/placeholder_movie_poster.png", "Comedy", "2023", "To Watch")]);
+    const [movieReturn, setMovieReturn] = useState([new MovieData("Test Movie", "1", "/placeholder_movie_poster.png", "Comedy", "2023", "", "To Watch")]);
     const [searchText, setSearchText] = useState('');
 
     const getMovieResults = (e) => {
         e.preventDefault();
 
-        setMovieReturn([])
+        setMovieReturn([]);
+
+        const descripText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."; 
 
         for (let i = 1; i < 5; i++) {
-            const newItem = new MovieData(searchText + " " + i, crypto.randomUUID(), "/placeholder_movie_poster.png", "Comedy", "202" + i, "Watched")
+            const newItem = new MovieData(searchText + " " + i, crypto.randomUUID(), "/placeholder_movie_poster.png", "Comedy", "202" + i, descripText, "Watched")
             setMovieReturn(prevUpdates => [...prevUpdates, newItem]);
         }
+    }
+
+    function addmovie( movieListIndex ) {
+        const localLibraryDB = JSON.parse(localStorage.getItem("libraryDB"));
+        localLibraryDB.push(movieReturn[movieListIndex]);
+        localStorage.setItem("libraryDB", JSON.stringify(localLibraryDB));
+
+        setLibraryDB(localLibraryDB);
+    }
+
+    function DisplayMovieResult ( { movie, index } ) {
+        return (
+            <div className="searchItem" data-index={index}>
+                <img src={movie.posterLink} alt={`${movie.name} poster`} />
+                <div className="searchItemDetails">
+                    <h3>{movie.name} ({movie.year})</h3>
+                    <p>{movie.genres}</p>
+                    <p>{movie.description}</p>
+                </div>
+                <button className="add-to-library-btn" onClick={(e) => addmovie(index)}>+</button>
+            </div>
+        );
     }
 
     return (
@@ -71,7 +83,7 @@ export function Library() {
                 <div className="item-list">
 
                     {[...libraryDB].reverse().map((movie, index) => {
-                        return <DisplayMovie key={index} movie={movie} />;
+                        return <DisplayMovie key={index} movie={movie}/>;
                     })}
 
                 </div>
@@ -87,7 +99,7 @@ export function Library() {
                 </form>
                 <div id="searchResults">
                     {movieReturn.map((movie, index) => {
-                        return <DisplayMovieResult key={index} movie={movie} />;
+                        return <DisplayMovieResult key={index} movie={movie} index={index}/>;
                     })}
                 </div>
             </dialog>
