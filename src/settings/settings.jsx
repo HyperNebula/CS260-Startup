@@ -48,6 +48,8 @@ export function Settings() {
         localStorage.setItem('userName', username);
 
         navigate('/library');
+        toast.success("Settings updated");
+        return;
     }
     
     return (

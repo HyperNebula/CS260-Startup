@@ -33,6 +33,7 @@ export function Login() {
 					localStorage.setItem('userID', userDataSet.indexOf(user));
 
 					navigate('/library');
+					toast.success("Successfully logged in");
 					return;
 				} else {
 					toast.error("Incorrect Password");
@@ -74,6 +75,8 @@ export function Login() {
 		localStorage.setItem('userName', username);
 
 		navigate('/settings');
+		toast.success("Account created");
+		return;
 	}
 
   	return (
