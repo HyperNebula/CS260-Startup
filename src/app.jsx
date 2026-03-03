@@ -16,12 +16,11 @@ export class UserData {
     }
 };
 
-localStorage.setItem("userDataSet", JSON.stringify([new UserData("david", "password")]));
-localStorage.setItem("userName", "");
-localStorage.setItem("userID", null);
-
-//localStorage.setItem("userName", "david");
-//localStorage.setItem("userID", 0);
+function handleLogout() {
+    fetch("api/auth", {
+        method: "DELETE",
+    });
+}
 
 function Navbar() {
     const location = useLocation()
@@ -38,7 +37,7 @@ function Navbar() {
             </div>
 
             <nav className="nav-links">
-                <NavLink to="">Log Out</NavLink> |
+                <NavLink to="" onClick={ handleLogout }>Log Out</NavLink> |
                 <NavLink to="library">Library</NavLink> |
                 <NavLink to="feed">Feed</NavLink>
             </nav>
