@@ -24,6 +24,8 @@ export function Login() {
 			return;
 		}
 
+		const status = createAuth("PUT");
+
 		const userDataSet = JSON.parse(localStorage.getItem("userDataSet"));
 
 		for (const user of userDataSet) {
@@ -78,6 +80,21 @@ export function Login() {
 		toast.success("Account created");
 		return;
 	}
+
+	async function createAuth(method) {
+        const res = await fetch("api/auth", {
+            method: method,
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password }),
+        });
+        await res.json();
+        if (res.ok) {
+            navigate("/library");
+        } else {
+            alert("Authentication failed");
+        }
+		return res.status;
+    }
 
   	return (
 		<main className='login-page'>
