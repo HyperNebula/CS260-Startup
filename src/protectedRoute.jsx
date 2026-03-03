@@ -1,9 +1,10 @@
-import React from 'react';
+import React from "react";
 import { Navigate } from "react-router-dom";
 
 export const ProtectedRoute = ({ children }) => {
+    // = fetch("api/user/me").ok
     const isAuthenticated = localStorage.getItem("userName");
-    
+
     if (!isAuthenticated) {
         return <Navigate to="/" replace />;
     }
