@@ -11,11 +11,11 @@ app.use(cookieParser());
 
 const users = [];
 
-async function createUser(email, password) {
+async function createUser(username, password) {
     const passwordHash = await bcrypt.hash(password, 10);
 
     const user = {
-        email: email,
+        username: username,
         password: passwordHash,
     };
 
@@ -49,24 +49,24 @@ function clearAuthCookie(res, user) {
 
 // registration
 app.post("/api/auth", async (req, res) => {
-    if (await getUser("email", req.body.email)) {
+    if (await getUser("username", req.body.username)) {
         res.status(409).send({ msg: "Existing user" });
     } else {
-        const user = await createUser(req.body.email, req.body.password);
+        const user = await createUser(req.body.username, req.body.password);
 
         setAuthCookie(res, user);
 
-        res.send({ email: user.email });
+        res.status(200).send({ username: user.username });
     }
 });
 
 // login
 app.put("/api/auth", async (req, res) => {
-    const user = await getUser("email", req.body.email);
+    const user = await getUser("username", req.body.username);
     if (user && (await bcrypt.compare(req.body.password, user.password))) {
         setAuthCookie(res, user);
 
-        res.send({ email: user.email });
+        res.status(200).send({ username: user.username });
     } else {
         res.status(401).send({ msg: "Unauthorized" });
     }
@@ -80,7 +80,7 @@ app.delete("/api/auth", async (req, res) => {
         clearAuthCookie(res, user);
     }
 
-    res.send({});
+    res.status(200).send({});
 });
 
 // getMe
@@ -88,7 +88,7 @@ app.get("/api/user/me", async (req, res) => {
     const token = req.cookies["token"];
     const user = await getUser("token", token);
     if (user) {
-        res.send({ email: user.email });
+        res.status(200).send({ username: user.username });
     } else {
         res.status(401).send({ msg: "Unauthorized" });
     }
