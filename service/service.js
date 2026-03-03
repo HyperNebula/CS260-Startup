@@ -76,6 +76,44 @@ app.put("/api/auth", async (req, res) => {
     }
 });
 
+// change password
+app.put("/api/update/pass", async (req, res) => {
+    try {
+        const user = await getUser("token", req.body.token);
+
+        if (!user) {
+            return res.status(402).send({ error: "Invalid token or user not found." });
+        }
+
+        users[users.indexOf(user)].password = await bcrypt.hash(req.body.password, 10);
+
+        res.status(200).send({ msg: "Password updated successfully" });
+        
+    } catch (error) {
+        console.error("Error updating password:", error);
+        res.status(500).send({ error: "An internal server error occurred." });
+    }
+});
+
+// change username
+app.put("/api/update/user", async (req, res) => {
+    try {
+        const user = await getUser("token", req.body.token);
+
+        if (!user) {
+            return res.status(402).send({ error: "Invalid token or user not found." });
+        }
+
+        users[users.indexOf(user)].username = req.body.username;
+
+        res.status(200).send({ msg: "Username updated successfully" });
+        
+    } catch (error) {
+        console.error("Error updating password:", error);
+        res.status(500).send({ error: "An internal server error occurred." });
+    }
+});
+
 // logout
 app.delete("/api/auth", async (req, res) => {
     const token = req.cookies["token"];
