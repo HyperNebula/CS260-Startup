@@ -27,6 +27,7 @@ export function Login() {
 		const status = await createAuth("PUT");
 
 		if (status == 200) {
+			localStorage.setItem('userName', username);
 			navigate('/library');
 			toast.success("Successfully logged in");
 			return;
@@ -56,6 +57,7 @@ export function Login() {
 		const status = await createAuth("POST");
 
 		if (status == 200) {
+			localStorage.setItem('userName', username);
 			navigate('/settings');
 			toast.success("Account created");
 			return;
