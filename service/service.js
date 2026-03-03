@@ -38,7 +38,6 @@ function setAuthCookie(res, user) {
         secure: true,
         httpOnly: true,
         sameSite: "strict",
-        maxAge: 10800,
     });
 }
 
@@ -65,30 +64,30 @@ app.put("/api/auth", async (req, res) => {
     const user = await getUser("username", req.body.username);
     if (!user) {
         res.status(403).send({ msg: "Unauthorized" });
-    }
-
-    if (await bcrypt.compare(req.body.password, user.password)) {
-        setAuthCookie(res, user);
-
-        res.status(200).send({ username: user.username });
     } else {
-        res.status(401).send({ msg: "Unauthorized" });
+        if (await bcrypt.compare(req.body.password, user.password)) {
+            setAuthCookie(res, user);
+
+            res.status(200).send({ username: user.username });
+        } else {
+            res.status(401).send({ msg: "Unauthorized" });
+        }
     }
 });
 
 // change password
 app.put("/api/update/pass", async (req, res) => {
     try {
-        const user = await getUser("token", req.body.token);
+        const token = req.cookies["token"];
+        const user = await getUser("token", token);
 
         if (!user) {
-            return res.status(402).send({ error: "Invalid token or user not found." });
+            res.status(402).send({ error: "Invalid token or user not found." });
+        } else {
+            users[users.indexOf(user)].password = await bcrypt.hash(req.body.password, 10);
+
+            res.status(200).send({ msg: "Password updated successfully" });
         }
-
-        users[users.indexOf(user)].password = await bcrypt.hash(req.body.password, 10);
-
-        res.status(200).send({ msg: "Password updated successfully" });
-        
     } catch (error) {
         console.error("Error updating password:", error);
         res.status(500).send({ error: "An internal server error occurred." });
@@ -98,18 +97,22 @@ app.put("/api/update/pass", async (req, res) => {
 // change username
 app.put("/api/update/user", async (req, res) => {
     try {
-        const user = await getUser("token", req.body.token);
+        if (await getUser("username", req.body.username)) {
+            res.status(409).send({ msg: "Existing user" });
+        } else {
+            const token = req.cookies["token"];
+            const user = await getUser("token", token);
 
-        if (!user) {
-            return res.status(402).send({ error: "Invalid token or user not found." });
+            if (!user) {
+                return res.status(402).send({ error: "Invalid token or user not found." });
+            } else {
+                users[users.indexOf(user)].username = req.body.username;
+
+                res.status(200).send({ msg: "Username updated successfully" });
+            }
         }
-
-        users[users.indexOf(user)].username = req.body.username;
-
-        res.status(200).send({ msg: "Username updated successfully" });
-        
     } catch (error) {
-        console.error("Error updating password:", error);
+        console.error("Error updating username:", error);
         res.status(500).send({ error: "An internal server error occurred." });
     }
 });

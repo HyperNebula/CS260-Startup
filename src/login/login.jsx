@@ -24,7 +24,7 @@ export function Login() {
 			return;
 		}
 
-		const status = await createAuth("PUT", JSON.stringify({ username, password }));
+		const status = await createAuth("auth", "PUT", JSON.stringify({ username, password }));
 
 		if (status == 200) {
 			localStorage.setItem('userName', username);
@@ -54,7 +54,7 @@ export function Login() {
 			return;
 		}
 
-		const status = await createAuth("POST", JSON.stringify({ username, password }));
+		const status = await createAuth("auth", "POST", JSON.stringify({ username, password }));
 
 		if (status == 200) {
 			localStorage.setItem('userName', username);

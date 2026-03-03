@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
+import { createAuth } from '../app';
+
 export function Settings() {
 
     const navigate = useNavigate();
@@ -10,22 +12,12 @@ export function Settings() {
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("");
 
-    const handleAccountUpdate = (e) => {
+    const handleAccountUpdate = async (e) => {
         e.preventDefault();
-
-        const userDataSet = JSON.parse(localStorage.getItem("userDataSet"));
         
-        if (localStorage.getItem("userName") != username) {
-            if (username.length < 3) {
-			    toast.error("Username should be at least 3 characters");
-			    return;
-		    }
-            for (const user of userDataSet) {
-                if (user.username == username) {
-                    toast.error("Username Already Taken");
-                    return;
-                }
-            }
+        if (username.length < 3) {
+            toast.error("Username should be at least 3 characters");
+            return;
         }
 
         if (password != passwordConfirm) {
@@ -38,14 +30,28 @@ export function Settings() {
             return;
         }
 
-        userDataSet[localStorage.getItem("userID")].username = username;
+        if (username != localStorage.getItem("userName")) {
+            const status = await createAuth("update/user", "PUT", JSON.stringify({ username }));
 
-        if (password != "") {
-            userDataSet[localStorage.getItem("userID")].password = password;
+            if (status == 200) {
+                localStorage.setItem('userName', username);
+            } else if (status == 402) {
+                toast.error("Invalid token or user not found. Log in again");
+                return;
+            } else if (status == 409) {
+                toast.error("Username already taken");
+                return;
+            }
         }
 
-        localStorage.setItem("userDataSet", JSON.stringify(userDataSet));
-        localStorage.setItem('userName', username);
+        if (password != "") {
+            const status = await createAuth("update/pass", "PUT", JSON.stringify({ password }));
+
+            if (status == 402) {
+                toast.error("Invalid token or user not found. Log in again");
+                return;
+            }
+        }
 
         navigate('/library');
         toast.success("Settings updated");

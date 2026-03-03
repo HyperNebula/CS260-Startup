@@ -45,8 +45,8 @@ function Navbar() {
     )
 }
 
-export async function createAuth(method, body) {
-    const res = await fetch("api/auth", {
+export async function createAuth(path, method, body) {
+    const res = await fetch("api/" + path, {
         method: method,
         headers: { "Content-Type": "application/json" },
         body: body,
