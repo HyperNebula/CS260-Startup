@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
-import { UserData } from '../app';
+import { createAuth } from '../app';
 
 export function Login() {
 	
@@ -24,7 +24,7 @@ export function Login() {
 			return;
 		}
 
-		const status = await createAuth("PUT");
+		const status = await createAuth("PUT", JSON.stringify({ username, password }));
 
 		if (status == 200) {
 			localStorage.setItem('userName', username);
@@ -54,7 +54,7 @@ export function Login() {
 			return;
 		}
 
-		const status = await createAuth("POST");
+		const status = await createAuth("POST", JSON.stringify({ username, password }));
 
 		if (status == 200) {
 			localStorage.setItem('userName', username);
@@ -66,16 +66,6 @@ export function Login() {
 			return;
 		}
 	}
-
-	async function createAuth(method) {
-        const res = await fetch("api/auth", {
-            method: method,
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ username, password }),
-        });
-
-		return res.status;
-    }
 
   	return (
 		<main className='login-page'>

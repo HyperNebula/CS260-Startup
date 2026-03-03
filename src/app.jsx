@@ -9,17 +9,13 @@ import { Feed } from './feed/feed';
 import { Settings } from './settings/settings';
 import { ProtectedRoute } from "./protectedRoute";
 
-export class UserData {
-    constructor(username, password) {
-        this.username = username;
-        this.password = password;
-    }
-};
 
 function handleLogout() {
     fetch("api/auth", {
         method: "DELETE",
     });
+    //localStorage.clear();
+    localStorage.setItem('userName', "");
 }
 
 function Navbar() {
@@ -47,6 +43,16 @@ function Navbar() {
             </div>
         </header>
     )
+}
+
+export async function createAuth(method, body) {
+    const res = await fetch("api/auth", {
+        method: method,
+        headers: { "Content-Type": "application/json" },
+        body: body,
+    });
+
+    return res.status;
 }
 
 export default function App() {
