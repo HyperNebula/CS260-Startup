@@ -63,7 +63,11 @@ app.post("/api/auth", async (req, res) => {
 // login
 app.put("/api/auth", async (req, res) => {
     const user = await getUser("username", req.body.username);
-    if (user && (await bcrypt.compare(req.body.password, user.password))) {
+    if (!user) {
+        res.status(403).send({ msg: "Unauthorized" });
+    }
+
+    if (await bcrypt.compare(req.body.password, user.password)) {
         setAuthCookie(res, user);
 
         res.status(200).send({ username: user.username });

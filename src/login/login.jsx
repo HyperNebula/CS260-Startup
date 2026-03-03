@@ -11,7 +11,7 @@ export function Login() {
 	const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-	const handleLogin = (e) => {
+	const handleLogin = async (e) => {
 		e.preventDefault();
 
 		if (username.length < 3) {
@@ -24,30 +24,23 @@ export function Login() {
 			return;
 		}
 
-		const status = createAuth("PUT");
+		const status = await createAuth("PUT");
 
-		const userDataSet = JSON.parse(localStorage.getItem("userDataSet"));
-
-		for (const user of userDataSet) {
-			if (user.username == username) {
-				if (user.password == password) {
-					localStorage.setItem('userName', username);
-					localStorage.setItem('userID', userDataSet.indexOf(user));
-
-					navigate('/library');
-					toast.success("Successfully logged in");
-					return;
-				} else {
-					toast.error("Incorrect Password");
-					return;
-				}
-			}
+		if (status == 200) {
+			navigate('/library');
+			toast.success("Successfully logged in");
+			return;
+		} else if (status == 401) {
+			toast.error("Incorrect Password");
+			return;
+		} else if (status == 403) {
+			toast.error("User is not registered");
+			return;
 		}
-		toast.error("User is not registered");
-		return;
+		
 	};
 
-	const handleAccountCreation = (e) => {
+	const handleAccountCreation = async (e) => {
 		e.preventDefault();
 
 		if (username.length < 3) {
@@ -60,25 +53,16 @@ export function Login() {
 			return;
 		}
 
-		const userDataSet = JSON.parse(localStorage.getItem("userDataSet"));
+		const status = await createAuth("POST");
 
-		for (const user of userDataSet) {
-			if (user.username == username) {
-				toast.error("Username Already Taken");
-				return;
-			}
+		if (status == 200) {
+			navigate('/settings');
+			toast.success("Account created");
+			return;
+		} else if (status == 409) {
+			toast.error("Username already taken");
+			return;
 		}
-
-		localStorage.setItem('userID', userDataSet.length);
-
-		userDataSet.push(new UserData(username, password));
-		localStorage.setItem("userDataSet", JSON.stringify(userDataSet));
-
-		localStorage.setItem('userName', username);
-
-		navigate('/settings');
-		toast.success("Account created");
-		return;
 	}
 
 	async function createAuth(method) {
@@ -87,12 +71,7 @@ export function Login() {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, password }),
         });
-        await res.json();
-        if (res.ok) {
-            navigate("/library");
-        } else {
-            alert("Authentication failed");
-        }
+
 		return res.status;
     }
 
