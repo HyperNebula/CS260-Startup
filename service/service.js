@@ -17,7 +17,7 @@ async function createUser(username, password) {
     const user = {
         username: username,
         password: passwordHash,
-        library: ["test"],
+        library: [],
     };
 
     users.push(user);
@@ -163,7 +163,7 @@ app.put("/api/library", async (req, res) => {
     if (!user) {
         res.status(401).send({ msg: "Unauthorized" });
     } else {
-        user.library.push(JSON.parse(req.body.movie))
+        user.library.push(req.body)
         res.status(200).send({ msg: "Library updated" });
     }
 });
