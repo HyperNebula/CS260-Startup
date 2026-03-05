@@ -9,6 +9,8 @@ const uuid = require("uuid");
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 
+const path = require('path');
+
 const users = [];
 
 async function createUser(username, password) {
@@ -191,6 +193,16 @@ app.delete("/api/library", async (req, res) => {
         user.library.splice(user.library.length - 1 - req.body.index, 1);
         res.status(200).send({ msg: "Library updated" });
     }
+});
+
+app.get('/library', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+app.get('/settings', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+app.get('/feed', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
