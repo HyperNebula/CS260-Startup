@@ -60,6 +60,7 @@ export function Library() {
     function DisplayMovie({ movie }) {
         return (
             <div className="item">
+                <button className="removeEntry">X</button>
                 <img src={movie["#IMG_POSTER"]} alt={movie["#TITLE"]} />
                 <div className="item-details">
                     <h2>{movie["#TITLE"]}</h2>

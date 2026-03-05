@@ -317,6 +317,14 @@ form.setting-form {
     box-shadow: 0 8px 15px rgba(0,0,0,0.1);
 }
 
+.item .removeEntry {
+    display: none;
+}
+
+.item:hover .removeEntry {
+    display: block;
+}
+
 .item img {
     max-height: 180px;
     height: auto;
@@ -359,7 +367,8 @@ form.setting-form {
     text-align: center;
 }
 
-#closeSearchModal {
+#closeSearchModal,
+.removeEntry {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -379,7 +388,8 @@ form.setting-form {
     
 }
 
-#closeSearchModal:hover {
+#closeSearchModal:hover,
+.removeEntry:hover  {
     background-color: #ddd;
 }
 
