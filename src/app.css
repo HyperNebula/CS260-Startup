@@ -318,7 +318,7 @@ form.setting-form {
 }
 
 .item img {
-    max-width: 130px;
+    max-height: 180px;
     height: auto;
 
     border-radius: 5px;
@@ -426,7 +426,7 @@ form.setting-form {
 }
 
 .searchItem img {
-    height: 150px;
+    max-width: 100px;
     object-fit: cover;
     border-radius: 3px;
 }

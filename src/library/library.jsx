@@ -26,26 +26,15 @@ export function Library() {
     const [movieReturn, setMovieReturn] = useState([]);
     const [searchText, setSearchText] = useState("");
 
-    const getMovieResults = (e) => {
+    const getMovieResults = async (e) => {
         e.preventDefault();
 
-        setMovieReturn([]);
-
-        const descripText =
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
-
-        for (let i = 1; i < 5; i++) {
-            const newItem = new MovieData(
-                searchText + " " + i,
-                crypto.randomUUID(),
-                "/placeholder_movie_poster.png",
-                "Comedy",
-                "202" + i,
-                descripText,
-                "Watched",
-            );
-            setMovieReturn((prevUpdates) => [...prevUpdates, newItem]);
-        }
+        const res = await fetch("https://imdb.iamidiotareyoutoo.com/search?q=" + searchText, {
+			method: "GET",
+			headers: { Accept: '*/*' }
+		});
+        const result = await res.json()
+        setMovieReturn(result.description);
     };
 
     async function getLibrary() {
@@ -71,15 +60,15 @@ export function Library() {
     function DisplayMovie({ movie }) {
         return (
             <div className="item">
-                <img src={movie.posterLink} alt={movie.name} />
+                <img src={movie["#IMG_POSTER"]} alt={movie["#TITLE"]} />
                 <div className="item-details">
-                    <h2>{movie.name}</h2>
+                    <h2>{movie["#TITLE"]}</h2>
                     <p>
-                        Genre: {movie.genres}
+                        Actors: {movie["#ACTORS"]}
                         <br />
-                        Year: {movie.year}
+                        Year: {movie["#YEAR"]}
                         <br />
-                        Status: {movie.status}
+                        Status: Watched
                     </p>
                 </div>
             </div>
@@ -89,13 +78,13 @@ export function Library() {
     function DisplayMovieResult({ movie, index }) {
         return (
             <div className="searchItem" data-index={index}>
-                <img src={movie.posterLink} alt={`${movie.name} poster`} />
+                <img src={movie["#IMG_POSTER"]} alt={`${movie["#TITLE"]} poster`} />
                 <div className="searchItemDetails">
                     <h3>
-                        {movie.name} ({movie.year})
+                        {movie["#TITLE"]} ({movie["#YEAR"]})
                     </h3>
-                    <p>{movie.genres}</p>
-                    <p>{movie.description}</p>
+                    <p>{movie["#ACTORS"]}</p>
+                    <p>Description</p>
                 </div>
                 <button
                     className="add-to-library-btn"
