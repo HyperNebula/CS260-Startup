@@ -473,3 +473,12 @@ form.setting-form {
 .add-to-library-btn:hover {
     background-color: #218838;
 }
+
+#emptyLibrary {
+    position: absolute;
+
+    font-size: 4.5vw;
+    margin-top: 8vh;
+    padding-left: 25%;
+    padding-right: 25%;
+}
