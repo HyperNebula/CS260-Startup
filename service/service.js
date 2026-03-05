@@ -168,6 +168,18 @@ app.put("/api/library", async (req, res) => {
     }
 });
 
+// remove from library
+app.delete("/api/library", async (req, res) => {
+    const token = req.cookies["token"];
+    const user = await getUser("token", token);
+    if (!user) {
+        res.status(401).send({ msg: "Unauthorized" });
+    } else {
+        user.library.splice(user.library.length - 1 - req.body.index, 1);
+        res.status(200).send({ msg: "Library updated" });
+    }
+});
+
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 app.listen(port, function () {
     console.log(`Listening on port ${port}`);

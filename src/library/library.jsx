@@ -47,7 +47,7 @@ export function Library() {
         return;
 	}
 
-    async function addmovie(movieListIndex) {
+    async function addMovie(movieListIndex) {
         const res = await fetch("api/library", {
 			method: "PUT",
 			headers: { "Content-Type": "application/json" },
@@ -57,10 +57,30 @@ export function Library() {
         getLibrary();
     }
 
-    function DisplayMovie({ movie }) {
+    async function removeMovie(index) {
+        const res = await fetch("api/library", {
+			method: "DELETE",
+			headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ index }),
+		});
+
+        getLibrary();
+    }
+
+    function DisplayMovieLibrary() {
+        if (libraryDB.length == 0) {
+            return (<span id="emptyLibrary">Your library is empty</span>);
+        } else {
+            return [...libraryDB].reverse().map((movie, index) => {
+                        return <DisplayMovie key={index} movie={movie} index={index}/>;
+                    })
+        }
+    }
+
+    function DisplayMovie({ movie, index }) {
         return (
             <div className="item">
-                <button className="removeEntry">X</button>
+                <button className="removeEntry" onClick={(e) => removeMovie(index)}>X</button>
                 <img src={movie["#IMG_POSTER"]} alt={movie["#TITLE"]} />
                 <div className="item-details">
                     <h2>{movie["#TITLE"]}</h2>
@@ -89,7 +109,7 @@ export function Library() {
                 </div>
                 <button
                     className="add-to-library-btn"
-                    onClick={(e) => addmovie(index)}
+                    onClick={(e) => addMovie(index)}
                 >
                     +
                 </button>
@@ -115,9 +135,7 @@ export function Library() {
 
             <div className="library-content">
                 <div className="item-list">
-                    {[...libraryDB].reverse().map((movie, index) => {
-                        return <DisplayMovie key={index} movie={movie} />;
-                    })}
+                    {<DisplayMovieLibrary/>}
                 </div>
             </div>
 
