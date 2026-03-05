@@ -14,8 +14,7 @@ function handleLogout() {
     fetch("api/auth", {
         method: "DELETE",
     });
-    //localStorage.clear();
-    localStorage.setItem('userName', "");
+    localStorage.clear();
 }
 
 function Navbar() {

@@ -57,6 +57,22 @@ export function Settings() {
         toast.success("Settings updated");
         return;
     }
+
+    const handleAccountDeletion = async (e) => {
+        e.preventDefault();
+
+        const res = await fetch("/api/user", { method: "DELETE", });
+        const status = res.status;
+
+        if (status == 200) {
+            navigate("/");
+            toast.success("Account successfully deleted");
+            return;
+        } else if (status == 402) {
+            toast.error("Invalid token or user not found. Log in again");
+            return;
+        }
+    }
     
     return (
         <main>
@@ -109,9 +125,6 @@ export function Settings() {
                     <p><strong>Privacy:</strong></p>
                     
                     <input type="checkbox" defaultChecked/>
-                    <label htmlFor="public-profile">Make my library visible to everyone</label><br/>
-
-                    <input type="checkbox" defaultChecked/>
                     <label htmlFor="show-activity">Share my activity in the public feed</label>
                     
                 </fieldset>
@@ -122,7 +135,7 @@ export function Settings() {
                     <legend><strong>Danger Zone</strong></legend>
                     
                     <p>Once you delete your account, there is no going back.</p>
-                    <button type="button">Delete Account</button>
+                    <button type="button" onClick={ handleAccountDeletion }>Delete Account</button>
                 </fieldset>
 
                 <br/>

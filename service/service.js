@@ -145,6 +145,19 @@ app.get("/api/user/me", async (req, res) => {
     }
 });
 
+// delete user
+app.delete("/api/user", async (req, res) => {
+    const token = req.cookies["token"];
+    const user = await getUser("token", token);
+    if (user) {
+        clearAuthCookie(res, user);
+        users.splice(users.indexOf(user), 1);
+        res.status(200).send({});
+    } else {
+        res.status(402).send({ msg: "Invalid token or user not found." });
+    }
+});
+
 // get library
 app.get("/api/library", async (req, res) => {
     const token = req.cookies["token"];
