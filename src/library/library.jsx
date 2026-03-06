@@ -64,7 +64,9 @@ export function Library() {
         e.preventDefault();
 
         if (formStatus == "Watched" && (formDate == "" || formRating == "")) {
-            toast.error("Add rating and the date viewed");
+            toast.error("Add rating and the date viewed", {
+                toasterId: 'modal',
+            });
             return;
         }
         
@@ -80,6 +82,7 @@ export function Library() {
 		});
 
         detailsModalRef.current.close();
+        document.getElementById('searchModal').close()
         getLibrary();
 
         toast.success(moviePUT["#TITLE"] + " was added to your library");
@@ -207,7 +210,7 @@ export function Library() {
             </dialog>
 
             <dialog id="detailsModal" ref={detailsModalRef}>
-                <div><Toaster/></div>
+                <div><Toaster toasterId="modal"/></div>
 
                 <div style={{ padding: '20px' }}>
                     <h2>Add Details</h2>
