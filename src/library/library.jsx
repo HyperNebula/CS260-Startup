@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-
-import { createAuth } from '../app';
+import React, { useState, useEffect, useRef } from "react";
+import toast, { Toaster } from 'react-hot-toast';
 
 class MovieData {
     constructor(name, movieID, posterLink, genres, year, description, status) {
@@ -18,13 +17,19 @@ class MovieData {
 
 export function Library() {
     const [libraryDB, setLibraryDB] = useState([]);
+    const [movieReturn, setMovieReturn] = useState([]);
+    const [searchText, setSearchText] = useState("");
+
+    const [selectedMovieIndex, setSelectedMovieIndex] = useState(null);
+    const [formStatus, setFormStatus] = useState("Watched");
+    const [formRating, setFormRating] = useState("");
+    const [formDate, setFormDate] = useState("");
+
+    const detailsModalRef = useRef(null);
 
     useEffect(() => {
         getLibrary();
     }, []);
-
-    const [movieReturn, setMovieReturn] = useState([]);
-    const [searchText, setSearchText] = useState("");
 
     const getMovieResults = async (e) => {
         e.preventDefault();
@@ -47,14 +52,37 @@ export function Library() {
         return;
 	}
 
-    async function addMovie(movieListIndex) {
+    function handleOpenDetails(index) {
+        setSelectedMovieIndex(index);
+        setFormStatus("Watched");
+        setFormRating("");
+        setFormDate("");
+        detailsModalRef.current.showModal();
+    }
+
+    async function addMovie(e) {
+        e.preventDefault();
+
+        if (formStatus == "Watched" && (formDate == "" || formRating == "")) {
+            toast.error("Add rating and the date viewed");
+            return;
+        }
+        
+        const moviePUT = movieReturn[selectedMovieIndex];
+        moviePUT.status = formStatus;
+        moviePUT.score = formRating;
+        moviePUT.dateViewed = formDate;
+
         const res = await fetch("api/library", {
 			method: "PUT",
 			headers: { "Content-Type": "application/json" },
-            body: JSON.stringify( movieReturn[movieListIndex]),
+            body: JSON.stringify( moviePUT ),
 		});
 
+        detailsModalRef.current.close();
         getLibrary();
+
+        toast.success(moviePUT["#TITLE"] + " was added to your library");
     }
 
     async function removeMovie(index) {
@@ -89,7 +117,11 @@ export function Library() {
                         <br />
                         Year: {movie["#YEAR"]}
                         <br />
-                        Status: Watched
+                        Status: { movie.status }
+                        <br />
+                        {movie.score && <>Rating: { movie.score }</>}
+                        <br />
+                        {movie.dateViewed && <>Date Viewed: {movie.dateViewed}</>}
                     </p>
                 </div>
             </div>
@@ -109,7 +141,7 @@ export function Library() {
                 </div>
                 <button
                     className="add-to-library-btn"
-                    onClick={(e) => addMovie(index)}
+                    onClick={(e) => handleOpenDetails(index)}
                 >
                     +
                 </button>
@@ -147,27 +179,82 @@ export function Library() {
                 >
                     X
                 </button>
-                <h2>Search for a Movie</h2>
-                <form id="searchForm" onSubmit={getMovieResults}>
-                    <input
-                        type="search"
-                        id="movieSearchInput"
-                        placeholder="Search for a movie..."
-                        value={searchText}
-                        onChange={(e) => setSearchText(e.target.value)}
-                    />
-                    <button type="submit">Search</button>
-                </form>
-                <div id="searchResults">
-                    {movieReturn.map((movie, index) => {
-                        return (
-                            <DisplayMovieResult
-                                key={index}
-                                movie={movie}
-                                index={index}
-                            />
-                        );
-                    })}
+
+                <div id="modalBody">
+                    <h2>Search for a Movie</h2>
+                    <form id="searchForm" onSubmit={getMovieResults}>
+                        <input
+                            type="search"
+                            id="movieSearchInput"
+                            placeholder="Search for a movie..."
+                            value={searchText}
+                            onChange={(e) => setSearchText(e.target.value)}
+                        />
+                        <button type="submit">Search</button>
+                    </form>
+                    <div id="searchResults">
+                        {movieReturn.map((movie, index) => {
+                            return (
+                                <DisplayMovieResult
+                                    key={index}
+                                    movie={movie}
+                                    index={index}
+                                />
+                            );
+                        })}
+                    </div>
+                </div>
+            </dialog>
+
+            <dialog id="detailsModal" ref={detailsModalRef}>
+                <div><Toaster/></div>
+
+                <div style={{ padding: '20px' }}>
+                    <h2>Add Details</h2>
+                    <form onSubmit={addMovie}>
+                        <div style={{ marginBottom: '10px' }}>
+                            <label>Status: </label>
+                            <select 
+                                value={formStatus} 
+                                onChange={(e) => setFormStatus(e.target.value)}
+                            >
+                                <option value="Watched">Watched</option>
+                                <option value="To Watch">To Watch</option>
+                            </select>
+                        </div>
+
+                        {formStatus == "Watched" && <>
+                            <div style={{ marginBottom: '10px' }}>
+                                <label>Rating (1-10): </label>
+                                <input 
+                                    type="number" 
+                                    min="1" 
+                                    max="10" 
+                                    value={formRating} 
+                                    onChange={(e) => setFormRating(e.target.value)}
+                                />
+                            </div>
+
+                            <div style={{ marginBottom: '20px' }}>
+                                <label>Date Viewed: </label>
+                                <input 
+                                    type="date" 
+                                    value={formDate} 
+                                    onChange={(e) => setFormDate(e.target.value)}
+                                />
+                            </div>
+                        </>}
+
+                        <div style={{ display: 'flex', gap: '10px' }}>
+                            <button 
+                                type="button" 
+                                onClick={() => detailsModalRef.current.close()}
+                            >
+                                Cancel
+                            </button>
+                            <button type="submit">Save to Library</button>
+                        </div>
+                    </form>
                 </div>
             </dialog>
         </main>
