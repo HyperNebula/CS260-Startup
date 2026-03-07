@@ -47,6 +47,10 @@ export function Library() {
 			method: "GET",
 			headers: { "Content-Type": "application/json" }
 		});
+        if (res.status == 401) {
+            toast.error("Invalid token or user not found. Log in again");
+            return;
+        }
         const data = await res.json();
         setLibraryDB(JSON.parse(data.library));
         return;
@@ -80,6 +84,13 @@ export function Library() {
 			headers: { "Content-Type": "application/json" },
             body: JSON.stringify( moviePUT ),
 		});
+
+        if (res.status == 401) {
+            toast.error("Invalid token or user not found. Log in again", {
+                toasterId: 'modal',
+            });
+            return;
+        }
 
         detailsModalRef.current.close();
         document.getElementById('searchModal').close()
