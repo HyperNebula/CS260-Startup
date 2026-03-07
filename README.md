@@ -96,12 +96,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Supports registration, login, logout, and restricted endpoint** - I did not complete this part of the deliverable.
+- [X] **Node.js/Express HTTP service** - I completed this section.
+- [X] **Static middleware for frontend** - I completed this section.
+- [X] **Calls to third party endpoints** - I used a third part API database to get information on movie searches.
+- [X] **Backend service endpoints** - I added a backend service call for everything requiring storing persistent data and for accounts.
+- [X] **Frontend calls service endpoints** - I created fetch requests to use each backend service that I implemented.
+- [X] **Supports registration, login, logout, and restricted endpoint** - I added functionality to support accounts, including modifying and deleting accounts. If the user is not logged in, they will be redirected to login page.
 
 ## 🚀 DB deliverable
 
