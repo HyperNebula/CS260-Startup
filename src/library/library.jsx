@@ -116,8 +116,6 @@ export function Library() {
                 <div className="item-details">
                     <h2>{movie["#TITLE"]}</h2>
                     <p>
-                        Actors: {movie["#ACTORS"]}
-                        <br />
                         Year: {movie["#YEAR"]}
                         <br />
                         Status: { movie.status }
@@ -140,7 +138,7 @@ export function Library() {
                         {movie["#TITLE"]} ({movie["#YEAR"]})
                     </h3>
                     <p>{movie["#ACTORS"]}</p>
-                    <p>Description</p>
+                    {/*<p>Description</p>*/}
                 </div>
                 <button
                     className="add-to-library-btn"
