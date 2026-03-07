@@ -25,6 +25,7 @@ export const ProtectedRoute = ({ children }) => {
     }
 
     if (!isAuthenticated) {
+        localStorage.clear();
         return <Navigate to="/" replace />;
     }
 

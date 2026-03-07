@@ -65,6 +65,7 @@ export function Settings() {
         const status = res.status;
 
         if (status == 200) {
+            localStorage.clear();
             navigate("/");
             toast.success("Account successfully deleted");
             return;
