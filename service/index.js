@@ -11,31 +11,32 @@ app.use(cookieParser());
 
 const path = require('path');
 
-const users = [];
+const DB = require('./database.js');
+
 
 async function createUser(username, password) {
     const passwordHash = await bcrypt.hash(password, 10);
 
     const user = {
+        id: uuid.v4(),
         username: username,
         password: passwordHash,
         library: [],
     };
 
-    users.push(user);
+    await DB.addUser(user);
 
     return user;
 }
 
-function getUser(field, value) {
-    if (value) {
-        return users.find((user) => user[field] === value);
-    }
-    return null;
+async function getUser(field, value) {
+    return await DB.getUser(field, value)
 }
 
-function setAuthCookie(res, user) {
+async function setAuthCookie(res, user) {
     user.token = uuid.v4();
+
+    await DB.updateUser(user)
 
     res.cookie("token", user.token, {
         secure: true,
@@ -45,7 +46,9 @@ function setAuthCookie(res, user) {
 }
 
 function clearAuthCookie(res, user) {
-    delete user.token;
+    const pulledUser = getUser("token", user.token)
+    delete pulledUser.token;
+    DB.updateUser(pulledUser)
     res.clearCookie("token");
 }
 
@@ -56,7 +59,7 @@ app.post("/api/auth", async (req, res) => {
     } else {
         const user = await createUser(req.body.username, req.body.password);
 
-        setAuthCookie(res, user);
+        await setAuthCookie(res, user);
 
         res.status(200).send({ username: user.username });
     }
@@ -69,7 +72,7 @@ app.put("/api/auth", async (req, res) => {
         res.status(403).send({ msg: "User not registered" });
     } else {
         if (await bcrypt.compare(req.body.password, user.password)) {
-            setAuthCookie(res, user);
+            await setAuthCookie(res, user);
 
             res.status(200).send({ username: user.username });
         } else {
@@ -87,10 +90,12 @@ app.put("/api/update/pass", async (req, res) => {
         if (!user) {
             res.status(402).send({ error: "Invalid token or user not found." });
         } else {
-            users[users.indexOf(user)].password = await bcrypt.hash(
+            user.password = bcrypt.hash(
                 req.body.password,
                 10,
             );
+
+            await DB.updateUser(user)
 
             res.status(200).send({ msg: "Password updated successfully" });
         }
@@ -114,7 +119,9 @@ app.put("/api/update/user", async (req, res) => {
                     .status(402)
                     .send({ error: "Invalid token or user not found." });
             } else {
-                users[users.indexOf(user)].username = req.body.username;
+                user.username = req.body.username;
+
+                await DB.updateUser(user)
 
                 res.status(200).send({ msg: "Username updated successfully" });
             }
@@ -153,7 +160,7 @@ app.delete("/api/user", async (req, res) => {
     const user = await getUser("token", token);
     if (user) {
         clearAuthCookie(res, user);
-        users.splice(users.indexOf(user), 1);
+        await DB.deleteUser(user)
         res.status(200).send({});
     } else {
         res.status(402).send({ msg: "Invalid token or user not found." });
@@ -179,6 +186,8 @@ app.put("/api/library", async (req, res) => {
         res.status(401).send({ msg: "Unauthorized" });
     } else {
         user.library.push(req.body)
+        await DB.updateUser(user)
+
         res.status(200).send({ msg: "Library updated" });
     }
 });
@@ -191,6 +200,8 @@ app.delete("/api/library", async (req, res) => {
         res.status(401).send({ msg: "Unauthorized" });
     } else {
         user.library.splice(user.library.length - 1 - req.body.index, 1);
+        await DB.updateUser(user)
+
         res.status(200).send({ msg: "Library updated" });
     }
 });
