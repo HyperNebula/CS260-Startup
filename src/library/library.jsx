@@ -177,11 +177,13 @@ export function Library() {
                 </button>
             </div>
 
+{/*
             <div id="filter-container">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="Watched">Watched</button>
-                <button class="filter-btn" data-filter="To Watch">To Watch</button>
+                <button className="filter-btn active" data-filter="all">All</button>
+                <button className="filter-btn" data-filter="Watched">Watched</button>
+                <button className="filter-btn" data-filter="To Watch">To Watch</button>
             </div>
+*/}
 
             <div className="library-content">
                 <div className="item-list">
