@@ -174,7 +174,7 @@ app.get("/api/library", async (req, res) => {
     if (!user) {
         res.status(401).send({ msg: "Unauthorized" });
     } else {
-        res.status(200).send({ library: JSON.stringify(user.library) });
+        res.status(200).send({ library: JSON.stringify(await DB.getLibrary(user)) });
     }
 });
 
@@ -187,6 +187,7 @@ app.put("/api/library", async (req, res) => {
     } else {
         user.library.push(req.body)
         await DB.updateUser(user)
+        await DB.sortLibraryInDB(user)
 
         res.status(200).send({ msg: "Library updated" });
     }
@@ -199,7 +200,7 @@ app.delete("/api/library", async (req, res) => {
     if (!user) {
         res.status(401).send({ msg: "Unauthorized" });
     } else {
-        user.library.splice(user.library.length - 1 - req.body.index, 1);
+        user.library.splice(req.body.index, 1);
         await DB.updateUser(user)
 
         res.status(200).send({ msg: "Library updated" });

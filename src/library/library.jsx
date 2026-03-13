@@ -13,8 +13,6 @@ class MovieData {
     }
 }
 
-//const testArray = [new MovieData("Test Movie", "1", "/placeholder_movie_poster.png", "Comedy", "2023", "", "To Watch"), new MovieData("Another Movie", "2", "/placeholder_movie_poster.png", "Action, Adventure", "2010", "", "Watched")];
-
 export function Library() {
     const [libraryDB, setLibraryDB] = useState([]);
     const [movieReturn, setMovieReturn] = useState([]);
@@ -53,6 +51,7 @@ export function Library() {
         }
         const data = await res.json();
         setLibraryDB(JSON.parse(data.library));
+
         return;
 	}
 
@@ -113,9 +112,9 @@ export function Library() {
         if (libraryDB.length == 0) {
             return (<span id="emptyLibrary">Your library is empty</span>);
         } else {
-            return [...libraryDB].reverse().map((movie, index) => {
-                        return <DisplayMovie key={index} movie={movie} index={index}/>;
-                    })
+            return libraryDB.map((movie, index) => {
+                return <DisplayMovie key={index} movie={movie} index={index}/>;
+            })
         }
     }
 
@@ -177,15 +176,13 @@ export function Library() {
                 </button>
             </div>
 
-{/*
-            <div id="filter-container">
-                <button className="filter-btn active" data-filter="all">All</button>
-                <button className="filter-btn" data-filter="Watched">Watched</button>
-                <button className="filter-btn" data-filter="To Watch">To Watch</button>
-            </div>
-*/}
-
             <div className="library-content">
+                <div id="filter-container">
+                    <button className="filter-btn active" data-filter="all">All</button>
+                    <button className="filter-btn" data-filter="Watched">Watched</button>
+                    <button className="filter-btn" data-filter="To Watch">To Watch</button>
+                </div>
+
                 <div className="item-list">
                     {<DisplayMovieLibrary/>}
                 </div>

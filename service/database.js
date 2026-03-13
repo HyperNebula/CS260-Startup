@@ -21,7 +21,9 @@ module.exports = {
     addUser,
     getUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    getLibrary,
+    sortLibraryInDB
 };
 
 async function addUser(user) {
@@ -38,4 +40,39 @@ async function updateUser(user) {
 
 async function deleteUser(user) {
   await userCollection.deleteOne({ id: user.id });
+}
+
+async function getLibrary(user) {
+    const results = await userCollection.aggregate([
+        { $match: { id: user.id } }, 
+        {
+            $project: {
+                library: {
+                    $sortArray: {
+                        input: "$library",
+                        sortBy: { dateViewed: -1 }
+                    }
+                }
+            }
+        }
+    ]).toArray();
+    return results[0].library
+}
+
+async function sortLibraryInDB(user) {
+    await userCollection.updateOne(
+        { id: user.id },
+        [
+            {
+                $set: {
+                    library: {
+                        $sortArray: {
+                            input: "$library",
+                            sortBy: { dateViewed: -1 }
+                        }
+                    }
+                }
+            }
+        ]
+    );
 }
