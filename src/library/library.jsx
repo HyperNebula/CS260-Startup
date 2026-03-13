@@ -18,6 +18,8 @@ export function Library() {
     const [movieReturn, setMovieReturn] = useState([]);
     const [searchText, setSearchText] = useState("");
 
+    const [currentFilter, setCurrentFilter] = useState("all");
+
     const [selectedMovieIndex, setSelectedMovieIndex] = useState(null);
     const [formStatus, setFormStatus] = useState("Watched");
     const [formRating, setFormRating] = useState("");
@@ -109,11 +111,17 @@ export function Library() {
     }
 
     function DisplayMovieLibrary() {
-        if (libraryDB.length == 0) {
+        const filteredLibrary = libraryDB.filter((movie) => {
+            if (currentFilter == "all") return true;
+            return movie.status == currentFilter;
+        });
+
+        if (filteredLibrary.length == 0) {
             return (<span id="emptyLibrary">Your library is empty</span>);
         } else {
-            return libraryDB.map((movie, index) => {
-                return <DisplayMovie key={index} movie={movie} index={index}/>;
+            return filteredLibrary.map((movie, index) => {
+                const originalIndex = libraryDB.indexOf(movie);
+                return <DisplayMovie key={index} movie={movie} index={originalIndex}/>;
             })
         }
     }
@@ -178,9 +186,9 @@ export function Library() {
 
             <div className="library-content">
                 <div id="filter-container">
-                    <button className="filter-btn active" data-filter="all">All</button>
-                    <button className="filter-btn" data-filter="Watched">Watched</button>
-                    <button className="filter-btn" data-filter="To Watch">To Watch</button>
+                    <button className={`filter-btn ${currentFilter === "all" ? "active" : ""}`} onClick={() => setCurrentFilter("all")}> All </button>
+                    <button className={`filter-btn ${currentFilter === "Watched" ? "active" : ""}`} onClick={() => setCurrentFilter("Watched")}> Watched </button>
+                    <button className={`filter-btn ${currentFilter === "To Watch" ? "active" : ""}`} onClick={() => setCurrentFilter("To Watch")}> To Watch </button>
                 </div>
 
                 <div className="item-list">
