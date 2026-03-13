@@ -550,3 +550,38 @@ form.setting-form {
 #detailsModal button[type="button"]:hover {
     background-color: #ddd;
 }
+
+#filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 10px 0 20px 0;
+}
+
+.filter-btn {
+    background-color: white;
+    color: #333;
+    border: 1px solid #ccc;
+
+    padding: 8px 20px;
+
+    border-radius: 20px;
+    
+    font-size: 1em;
+    
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background-color: #f1f1f1;
+    border-color: #bbb;
+}
+
+.filter-btn.active {
+    background-color: #333;
+    color: white;
+    border-color: #333;
+    
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
